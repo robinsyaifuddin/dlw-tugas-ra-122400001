@@ -1,13 +1,3 @@
 {
-  "functions": {
-    "index.php": {
-      "runtime": "vercel-php@0.7.3"
-    }
-  },
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/index.php"
-    }
-  ]
+  "cleanUrls": true
 }
