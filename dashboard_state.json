@@ -74,5 +74,14 @@
             "time": "15 Okt 2026, 04:10 WIB"
         }
     },
-    "notes": "Fase 1 telah selesai 100%! Seluruh dependensi PyTorch dan dataset Duomo + Navigli (Kotak 4555) telah lolos uji Smoke Test. Siap melanjutkan ke Fase 2 (Eksperimen Bagian 0, Bagian A, dan Bagian B)."
+    "notes_history": [
+        {
+            "id": "note-1",
+            "author": "Robin Syaifuddin (Ketua)",
+            "text": "Sudah brainstorming terkait informasi tugas dan membuat plan awal dalam eksekusi, pembuatan dashboard monitoring yang bisa diakses public dengan vercell sehingga bisa realtime melihat progress kelompok lalu melakukan clone di folder tugas dan setelah itu melakukan integrasi deploy ke vercel untuk tracking monitoring checklist pengerjaan setiap fase. untuk fase yang sudah diselesaikan saat ini yaitu fase 1 dan tinggal untuk ke fase 2 setelah diskusi dan eksekusi bersama dengan tim kelompok.",
+            "device": "Windows PC · Chrome",
+            "time": "15 Okt 2026, 04:19 WIB"
+        }
+    ],
+    "notes": "Sudah brainstorming terkait informasi tugas dan membuat plan awal dalam eksekusi, pembuatan dashboard monitoring yang bisa diakses public dengan vercell sehingga bisa realtime melihat progress kelompok lalu melakukan clone di folder tugas dan setelah itu melakukan integrasi deploy ke vercel untuk tracking monitoring checklist pengerjaan setiap fase. untuk fase yang sudah diselesaikan saat ini yaitu fase 1 dan tinggal untuk ke fase 2 setelah diskusi dan eksekusi bersama dengan tim kelompok - Robin"
 }

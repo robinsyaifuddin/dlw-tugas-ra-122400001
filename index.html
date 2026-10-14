@@ -246,18 +246,44 @@
             </div>
         </div>
 
-        <!-- Section Catatan Diskusi Tim (BISA DISIMPAN) -->
-        <div class="bg-white rounded-xl border border-slate-200/80 p-5 shadow-subtle">
-            <div class="flex items-center justify-between mb-3">
-                <div class="flex items-center gap-2">
-                    <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Catatan Kerja & Hipotesis Tim</span>
-                    <span id="notes-status" class="text-xs text-emerald-600 font-medium hidden">• Catatan berhasil disimpan!</span>
+        <!-- Section Riwayat Catatan Kerja Tim (INTERAKTIF & HISTORIS) -->
+        <div class="bg-white rounded-xl border border-slate-200/80 p-6 shadow-subtle space-y-5">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                <div>
+                    <h3 class="text-sm font-bold text-slate-900 flex items-center gap-2">
+                        <i class="fa-regular fa-clipboard-list text-slate-800"></i>
+                        Logbook & Riwayat Catatan Kerja Tim
+                    </h3>
+                    <p class="text-xs text-slate-500 mt-0.5">Catatan terekam historis beserta nama pembuat, tanggal, waktu, dan perangkat.</p>
                 </div>
-                <button id="save-notes-btn" class="px-3 py-1.5 bg-slate-900 hover:bg-slate-800 text-white text-xs rounded-md font-semibold transition flex items-center gap-1.5 shadow-xs">
-                    <i class="fa-regular fa-floppy-disk text-xs"></i> Simpan Catatan
-                </button>
+                <span id="notes-status" class="text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-200 hidden">
+                    <i class="fa-solid fa-check"></i> Catatan berhasil ditambahkan!
+                </span>
             </div>
-            <textarea id="team-notes-input" rows="3" class="w-full bg-slate-50/70 border border-slate-200 rounded-lg p-3 text-xs text-slate-800 focus:bg-white focus:outline-none focus:ring-1 focus:ring-slate-900 focus:border-slate-900 leading-relaxed font-sans" placeholder="Tuliskan catatan teknis atau status pembagian tugas di sini..."></textarea>
+
+            <!-- Form Tambah Catatan Baru -->
+            <div class="bg-slate-50/70 border border-slate-200 rounded-lg p-4 space-y-3">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                    <div class="flex items-center gap-2">
+                        <label class="text-xs font-semibold text-slate-700">Penulis:</label>
+                        <select id="note-author-input" class="bg-white border border-slate-300 rounded-md px-2.5 py-1 text-xs text-slate-900 font-medium focus:outline-none focus:ring-1 focus:ring-slate-900">
+                            <option value="Robin Syaifuddin (Ketua)">Robin Syaifuddin (Ketua)</option>
+                            <option value="M. Hamdan Al Ghifari">M. Hamdan Al Ghifari</option>
+                            <option value="Nathanael Hasiholan T.">Nathanael Hasiholan T.</option>
+                            <option value="Tim Navigli">Tim Navigli (Bersama)</option>
+                        </select>
+                    </div>
+                    <button id="add-note-btn" class="px-3.5 py-1.5 bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold rounded-md transition shadow-xs flex items-center gap-1.5">
+                        <i class="fa-solid fa-plus text-xs"></i> Tambah Catatan Baru
+                    </button>
+                </div>
+                <textarea id="team-notes-input" rows="3" class="w-full bg-white border border-slate-300 rounded-lg p-3 text-xs text-slate-800 focus:outline-none focus:ring-1 focus:ring-slate-900 leading-relaxed font-sans" placeholder="Tuliskan catatan kerja, keputusan teknis, atau temuan eksperimen di sini..."></textarea>
+            </div>
+
+            <!-- Feed Riwayat Catatan -->
+            <div class="space-y-3" id="notes-history-container">
+                <div class="py-4 text-center text-slate-400 text-xs">Memuat riwayat catatan...</div>
+            </div>
         </div>
 
     </main>
@@ -492,6 +518,7 @@
                     globalState.tasks = { ...serverState.tasks, ...globalState.tasks };
                     globalState.audit_trail = { ...serverState.audit_trail, ...globalState.audit_trail };
                     globalState.notes = globalState.notes || serverState.notes || "";
+                    globalState.notes_history = serverState.notes_history || globalState.notes_history || [];
 
                     if (globalState.github_repo) {
                         currentRepo = globalState.github_repo;
@@ -499,15 +526,13 @@
                         document.getElementById('navbar-repo-link').href = `https://github.com/${currentRepo}`;
                     }
 
-                    if (globalState.notes) {
-                        document.getElementById('team-notes-input').value = globalState.notes;
-                    }
-
                     renderPhasesUI();
+                    renderNotesHistory();
                     loadGitHubCommits();
                 })
                 .catch(() => {
                     renderPhasesUI();
+                    renderNotesHistory();
                     loadGitHubCommits();
                 });
         }
@@ -603,21 +628,72 @@
             }
         });
 
-        // Simpan Catatan Tim
-        document.getElementById('save-notes-btn').addEventListener('click', function() {
-            const notes = document.getElementById('team-notes-input').value;
-            globalState.notes = notes;
+        function renderNotesHistory() {
+            const container = document.getElementById('notes-history-container');
+            const history = globalState.notes_history || [];
+
+            if (history.length === 0) {
+                container.innerHTML = '<div class="py-4 text-center text-slate-400 text-xs">Belum ada riwayat catatan. Tuliskan catatan pertama tim Anda di atas!</div>';
+                return;
+            }
+
+            let html = '';
+            history.forEach(item => {
+                const authorInitial = item.author.charAt(0).toUpperCase();
+                html += `
+                <div class="p-4 rounded-lg border border-slate-200 bg-slate-50/60 hover:bg-slate-50 transition space-y-2">
+                    <div class="flex items-center justify-between text-xs">
+                        <div class="flex items-center gap-2">
+                            <span class="w-6 h-6 rounded-full bg-slate-900 text-white font-bold text-[11px] flex items-center justify-center shrink-0">
+                                ${authorInitial}
+                            </span>
+                            <span class="font-bold text-slate-900">${item.author}</span>
+                            <span class="text-slate-400">•</span>
+                            <span class="text-[11px] text-slate-500 font-mono">${item.time}</span>
+                        </div>
+                        <span class="text-[10px] text-slate-400 font-mono hidden sm:inline-block">${item.device || ''}</span>
+                    </div>
+                    <p class="text-xs text-slate-700 leading-relaxed pl-8 whitespace-pre-wrap">${item.text}</p>
+                </div>
+                `;
+            });
+
+            container.innerHTML = html;
+        }
+
+        // Tambah Catatan Tim Baru
+        document.getElementById('add-note-btn').addEventListener('click', function() {
+            const inputEl = document.getElementById('team-notes-input');
+            const text = inputEl.value.trim();
+            if (!text) return;
+
+            const author = document.getElementById('note-author-input').value;
+            const newNote = {
+                id: 'note-' + Date.now(),
+                author: author,
+                text: text,
+                device: getDeviceDescriptor(),
+                time: getWIBTime()
+            };
+
+            if (!globalState.notes_history) globalState.notes_history = [];
+            globalState.notes_history.unshift(newNote); // Catatan baru di paling atas
+
+            // Simpan ke localStorage per browser
             localStorage.setItem('dlw_dashboard_state', JSON.stringify(globalState));
+            inputEl.value = '';
 
             const statusEl = document.getElementById('notes-status');
             statusEl.classList.remove('hidden');
             setTimeout(() => statusEl.classList.add('hidden'), 2500);
 
+            renderNotesHistory();
+
             // Sync ke backend PHP jika di lokal
             fetch('index.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: `action=save_notes&notes=${encodeURIComponent(notes)}`
+                body: `action=add_note_history&author=${encodeURIComponent(author)}&text=${encodeURIComponent(text)}&device=${encodeURIComponent(getDeviceDescriptor())}&time=${encodeURIComponent(getWIBTime())}`
             }).catch(() => {});
         });
     </script>
