@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Studi Ablasi Deep Learning · Workspace Navigli</title>
     <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,139 +32,148 @@
             background-color: #f8fafc;
             color: #0f172a;
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
         .task-checkbox:checked {
             background-color: #0f172a;
             border-color: #0f172a;
             background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
         }
+        /* Hide scrollbar for tabs navigation on mobile */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
     </style>
 </head>
-<body class="min-h-screen pb-20">
+<body class="min-h-screen pb-20 overflow-x-hidden">
 
-    <!-- Top Navigation Header -->
+    <!-- Top Navigation Header: Mobile Optimized -->
     <header class="bg-white border-b border-slate-200/80 sticky top-0 z-30 shadow-subtle">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-            <div>
-                <h1 class="text-base font-bold text-slate-900 tracking-tight">Studi Ablasi Deep Learning</h1>
-                <p class="text-xs text-slate-500 font-medium">Workshop Deep Learning · Kecerdasan Buatan RA</p>
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-0 sm:h-16 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div class="min-w-0">
+                <h1 class="text-sm sm:text-base font-bold text-slate-900 tracking-tight truncate">Studi Ablasi Deep Learning</h1>
+                <p class="text-[11px] sm:text-xs text-slate-500 font-medium truncate">Workshop Deep Learning · Kecerdasan Buatan RA</p>
             </div>
 
             <!-- Progress Meter & Tombol Repo -->
-            <div class="flex items-center gap-6">
+            <div class="flex items-center justify-between sm:justify-end gap-3 sm:gap-6 border-t sm:border-t-0 pt-2 sm:pt-0 border-slate-100">
                 <!-- Progress Meter -->
-                <div class="hidden sm:flex items-center gap-3">
-                    <div class="text-right">
-                        <div class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">Progres Tugas</div>
-                        <div class="text-xs font-bold font-mono text-slate-900" id="progress-text">Memuat...</div>
+                <div class="flex items-center gap-2 sm:gap-3">
+                    <div class="text-left sm:text-right">
+                        <div class="text-[9px] sm:text-[10px] font-semibold text-slate-400 uppercase tracking-wider">Progres Tugas</div>
+                        <div class="text-[11px] sm:text-xs font-bold font-mono text-slate-900" id="progress-text">Memuat...</div>
                     </div>
-                    <div class="w-28 bg-slate-100 rounded-full h-2 p-0.5 border border-slate-200 flex items-center">
+                    <div class="w-20 sm:w-28 bg-slate-100 rounded-full h-2 p-0.5 border border-slate-200 flex items-center">
                         <div id="progress-bar" class="bg-slate-900 h-full rounded-full transition-all duration-300 ease-out" style="width: 0%"></div>
                     </div>
                 </div>
 
                 <!-- Tombol Repo GitHub -->
-                <a id="navbar-repo-link" href="https://github.com/robinsyaifuddin/dlw-tugas-ra-122400001" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold shadow-xs transition">
-                    <i class="fa-brands fa-github text-sm"></i>
-                    <span>Repository</span>
+                <a id="navbar-repo-link" href="https://github.com/robinsyaifuddin/dlw-tugas-ra-122400001" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-white text-[11px] sm:text-xs font-semibold shadow-xs transition shrink-0">
+                    <i class="fa-brands fa-github text-xs sm:text-sm"></i>
+                    <span>Repo</span>
                 </a>
             </div>
         </div>
     </header>
 
     <!-- Subheader Alert / Deadline Bar -->
-    <div class="bg-slate-100/70 border-b border-slate-200/60 py-2.5 px-4 sm:px-6 text-xs text-slate-600">
-        <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-2">
+    <div class="bg-slate-100/70 border-b border-slate-200/60 py-2 sm:py-2.5 px-4 sm:px-6 text-[11px] sm:text-xs text-slate-600">
+        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-2">
             <div class="flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                <span>Tenggat Pengumpulan: <strong class="text-slate-900 font-semibold">Rabu, 28 Oktober 2026, 23.59 WIB</strong></span>
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0"></span>
+                <span>Tenggat: <strong class="text-slate-900 font-semibold">28 Okt 2026, 23.59 WIB</strong></span>
             </div>
-            <div class="flex items-center gap-4 text-slate-500 font-medium">
-                <span>Format: IEEE 2-Kolom (Typst)</span>
+            <div class="flex items-center gap-2 sm:gap-4 text-slate-500 font-medium text-[10px] sm:text-xs">
+                <span>IEEE 2-Kolom (Typst)</span>
                 <span>•</span>
-                <span>Audit Trail: <strong class="text-emerald-700 font-semibold">Merekam IP & Waktu Centang</strong></span>
+                <span>Audit Trail Live</span>
             </div>
         </div>
     </div>
 
     <!-- Main Content Container -->
-    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 space-y-8">
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 sm:mt-8 space-y-6 sm:space-y-8">
 
         <!-- Top Information Grid: Editorial Style -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
             
             <!-- Card 1: Anggota Tim -->
-            <div class="bg-white rounded-xl border border-slate-200/80 p-5 shadow-subtle flex flex-col justify-between">
+            <div class="bg-white rounded-xl border border-slate-200/80 p-4 sm:p-5 shadow-subtle flex flex-col justify-between">
                 <div>
-                    <div class="flex items-center justify-between pb-3 border-b border-slate-100 text-xs font-bold text-slate-400 uppercase tracking-wider">
+                    <div class="flex items-center justify-between pb-3 border-b border-slate-100 text-[11px] font-bold text-slate-400 uppercase tracking-wider">
                         <span>Anggota Kelompok</span>
                         <i class="fa-regular fa-user-group text-slate-400"></i>
                     </div>
-                    <div class="mt-3.5 space-y-2.5 text-xs">
-                        <div class="flex items-center justify-between">
-                            <span class="font-semibold text-slate-900">Robin Syaifuddin</span>
-                            <span class="font-mono text-slate-500 bg-slate-50 px-1.5 py-0.5 rounded border border-slate-200">122400001 (01)</span>
+                    <div class="mt-3 space-y-2 text-xs">
+                        <div class="flex items-center justify-between gap-1">
+                            <span class="font-semibold text-slate-900 truncate">Robin Syaifuddin</span>
+                            <span class="font-mono text-slate-500 bg-slate-50 px-1.5 py-0.5 rounded border border-slate-200 text-[10px] shrink-0">122400001 (01)</span>
                         </div>
-                        <div class="flex items-center justify-between">
-                            <span class="font-medium text-slate-700">M. Hamdan Al Ghifari</span>
-                            <span class="font-mono text-slate-500 bg-slate-50 px-1.5 py-0.5 rounded border border-slate-200">121400075</span>
+                        <div class="flex items-center justify-between gap-1">
+                            <span class="font-medium text-slate-700 truncate">M. Hamdan Al Ghifari</span>
+                            <span class="font-mono text-slate-500 bg-slate-50 px-1.5 py-0.5 rounded border border-slate-200 text-[10px] shrink-0">121400075</span>
                         </div>
-                        <div class="flex items-center justify-between">
-                            <span class="font-medium text-slate-700">Nathanael Hasiholan T.</span>
-                            <span class="font-mono text-slate-500 bg-slate-50 px-1.5 py-0.5 rounded border border-slate-200">122400053</span>
+                        <div class="flex items-center justify-between gap-1">
+                            <span class="font-medium text-slate-700 truncate">Nathanael Hasiholan T.</span>
+                            <span class="font-mono text-slate-500 bg-slate-50 px-1.5 py-0.5 rounded border border-slate-200 text-[10px] shrink-0">122400053</span>
                         </div>
                     </div>
                 </div>
-                <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] text-slate-500 flex items-center justify-between">
+                <div class="mt-3.5 pt-2.5 border-t border-slate-100 text-[10px] sm:text-[11px] text-slate-500 flex items-center justify-between">
                     <span>Penentu Lokasi:</span>
                     <span class="font-semibold text-slate-700">NIM Terkecil (Digit 1)</span>
                 </div>
             </div>
 
             <!-- Card 2: Lokasi Kelompok -->
-            <div class="bg-white rounded-xl border border-slate-200/80 p-5 shadow-subtle flex flex-col justify-between">
+            <div class="bg-white rounded-xl border border-slate-200/80 p-4 sm:p-5 shadow-subtle flex flex-col justify-between">
                 <div>
-                    <div class="flex items-center justify-between pb-3 border-b border-slate-100 text-xs font-bold text-slate-400 uppercase tracking-wider">
+                    <div class="flex items-center justify-between pb-3 border-b border-slate-100 text-[11px] font-bold text-slate-400 uppercase tracking-wider">
                         <span>Target Lokasi (Bagian D)</span>
                         <i class="fa-regular fa-location-dot text-slate-400"></i>
                     </div>
-                    <div class="mt-3.5">
+                    <div class="mt-3">
                         <div class="flex items-baseline gap-2">
-                            <span class="text-xl font-bold text-slate-900 tracking-tight">Navigli (Darsena)</span>
-                            <span class="text-xs font-mono font-semibold px-2 py-0.5 bg-slate-100 text-slate-600 rounded">Kotak 4555</span>
+                            <span class="text-base sm:text-xl font-bold text-slate-900 tracking-tight">Navigli (Darsena)</span>
+                            <span class="text-[10px] sm:text-xs font-mono font-semibold px-1.5 py-0.5 bg-slate-100 text-slate-600 rounded">Kotak 4555</span>
                         </div>
-                        <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                        <p class="text-[11px] sm:text-xs text-slate-600 mt-2 leading-relaxed">
                             Kawasan kanal & hiburan malam (*nightlife*). Karakteristik: beban trafik melonjak tajam saat malam hingga dini hari (20.00–02.00) dan *weekend surge*.
                         </p>
                     </div>
                 </div>
-                <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] text-slate-500 flex items-center justify-between">
+                <div class="mt-3.5 pt-2.5 border-t border-slate-100 text-[10px] sm:text-[11px] text-slate-500 flex items-center justify-between">
                     <span>Fokus Pola:</span>
                     <span class="font-medium text-slate-700">Spike Malam & Weekend</span>
                 </div>
             </div>
 
             <!-- Card 3: Faktor Bagian B & Visi AI Agentik -->
-            <div class="bg-white rounded-xl border border-slate-200/80 p-5 shadow-subtle flex flex-col justify-between">
+            <div class="bg-white rounded-xl border border-slate-200/80 p-4 sm:p-5 shadow-subtle flex flex-col justify-between">
                 <div>
-                    <div class="flex items-center justify-between pb-3 border-b border-slate-100 text-xs font-bold text-slate-400 uppercase tracking-wider">
+                    <div class="flex items-center justify-between pb-3 border-b border-slate-100 text-[11px] font-bold text-slate-400 uppercase tracking-wider">
                         <span>Ablasi Pilihan & Visi Agentik</span>
                         <i class="fa-regular fa-compass text-slate-400"></i>
                     </div>
-                    <div class="mt-3.5 space-y-2">
+                    <div class="mt-3 space-y-2">
                         <div class="flex items-center gap-2">
-                            <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-slate-900 text-white font-mono">B4</span>
-                            <span class="text-xs font-semibold text-slate-800">Fungsi Loss: MSE, MAE, <span class="underline decoration-emerald-500 decoration-2">Huber</span></span>
+                            <span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-slate-900 text-white font-mono shrink-0">B4</span>
+                            <span class="text-xs font-semibold text-slate-800">Loss: MSE, MAE, <span class="underline decoration-emerald-500 decoration-2">Huber</span></span>
                         </div>
                         <div class="flex items-center gap-2">
-                            <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-slate-900 text-white font-mono">B6</span>
-                            <span class="text-xs font-semibold text-slate-800">Horizon: 1, 6, 24 jam (Multi-step foresight)</span>
+                            <span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-slate-900 text-white font-mono shrink-0">B6</span>
+                            <span class="text-xs font-semibold text-slate-800">Horizon: 1, 6, 24 jam (Foresight)</span>
                         </div>
                     </div>
                 </div>
-                <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] text-slate-500 flex items-center justify-between">
+                <div class="mt-3.5 pt-2.5 border-t border-slate-100 text-[10px] sm:text-[11px] text-slate-500 flex items-center justify-between">
                     <span>Fase 1 Status:</span>
-                    <span class="font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">100% Selesai (Smoke Test Passed)</span>
+                    <span class="font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 text-[10px]">100% Selesai (Smoke Test Passed)</span>
                 </div>
             </div>
 
@@ -174,28 +183,28 @@
         <div class="bg-white rounded-xl border border-slate-200/80 shadow-subtle overflow-hidden">
             
             <!-- Navigation Header Inside Card -->
-            <div class="border-b border-slate-200 px-6 py-4 flex flex-wrap items-center justify-between gap-4 bg-slate-50/50">
+            <div class="border-b border-slate-200 px-4 sm:px-6 py-3 sm:py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-slate-50/50">
                 <div>
                     <div class="flex items-center gap-2">
-                        <h2 class="text-base font-bold text-slate-900">Checklist Eksekusi & Fase Proyek</h2>
-                        <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-semibold bg-emerald-100 text-emerald-800">
-                            <i class="fa-solid fa-bolt text-[9px]"></i> Interaktif Live
+                        <h2 class="text-sm sm:text-base font-bold text-slate-900">Checklist Eksekusi & Fase Proyek</h2>
+                        <span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] font-semibold bg-emerald-100 text-emerald-800 shrink-0">
+                            <i class="fa-solid fa-bolt text-[8px]"></i> Live
                         </span>
                     </div>
-                    <p class="text-xs text-slate-500 mt-0.5">Klik kotak untuk mengubah status. Sistem otomatis mencatat IP, Perangkat, dan Waktu centang.</p>
+                    <p class="text-[11px] sm:text-xs text-slate-500 mt-0.5">Klik kotak untuk update status. IP, perangkat & waktu terekam otomatis.</p>
                 </div>
 
-                <div class="flex items-center gap-1.5 bg-white p-1 rounded-lg border border-slate-200 shadow-xs text-xs font-medium">
-                    <button type="button" class="px-3 py-1.5 rounded-md bg-slate-900 text-white font-semibold shadow-xs">Semua Fase</button>
-                    <a href="#fase-1" class="px-3 py-1.5 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition">Fase 1</a>
-                    <a href="#fase-2" class="px-3 py-1.5 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition">Fase 2</a>
-                    <a href="#fase-3" class="px-3 py-1.5 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition">Fase 3 & 4</a>
-                    <a href="#fase-5" class="px-3 py-1.5 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition">Fase 5</a>
+                <!-- Tabs Phase: Swipable on mobile -->
+                <div class="flex items-center gap-1 bg-white p-1 rounded-lg border border-slate-200 shadow-xs text-xs font-medium overflow-x-auto no-scrollbar max-w-full">
+                    <button type="button" class="px-2.5 py-1 rounded-md bg-slate-900 text-white font-semibold text-[11px] shrink-0">Semua</button>
+                    <a href="#fase-1" class="px-2.5 py-1 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-50 text-[11px] shrink-0">Fase 1</a>
+                    <a href="#fase-2" class="px-2.5 py-1 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-50 text-[11px] shrink-0">Fase 2</a>
+                    <a href="#fase-3" class="px-2.5 py-1 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-50 text-[11px] shrink-0">Fase 3 & 4</a>
+                    <a href="#fase-5" class="px-2.5 py-1 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-50 text-[11px] shrink-0">Fase 5</a>
                 </div>
             </div>
 
-            <div class="p-6 space-y-8 divide-y divide-slate-100" id="phases-container">
-                <!-- Fase-fase akan di-render otomatis via JavaScript dengan audit log -->
+            <div class="p-4 sm:p-6 space-y-6 sm:space-y-8 divide-y divide-slate-100" id="phases-container">
                 <div class="py-8 text-center text-slate-400 text-xs flex items-center justify-center gap-2">
                     <i class="fa-solid fa-circle-notch fa-spin text-sm"></i>
                     <span>Memuat status fase dan audit log...</span>
@@ -204,41 +213,41 @@
         </div>
 
         <!-- SECTION: RIWAYAT COMMIT GITHUB (REALTIME) -->
-        <div class="bg-white rounded-xl border border-slate-200/80 p-6 shadow-subtle space-y-4">
-            <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 pb-4">
+        <div class="bg-white rounded-xl border border-slate-200/80 p-4 sm:p-6 shadow-subtle space-y-4">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-3 sm:pb-4">
                 <div>
                     <div class="flex items-center gap-2">
-                        <i class="fa-brands fa-github text-slate-900 text-lg"></i>
-                        <h3 class="text-sm font-bold text-slate-900">Riwayat Commit Anggota Tim (Realtime)</h3>
-                        <span class="flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                        <i class="fa-brands fa-github text-slate-900 text-base sm:text-lg"></i>
+                        <h3 class="text-xs sm:text-sm font-bold text-slate-900">Riwayat Commit Tim (Realtime)</h3>
+                        <span class="flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200 shrink-0">
                             <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span> Live Sync
                         </span>
                     </div>
-                    <p class="text-xs text-slate-500 mt-0.5">Memantau kontribusi commit aktif Robin, Hamdan, dan Nathanael langsung dari GitHub.</p>
+                    <p class="text-[11px] sm:text-xs text-slate-500 mt-0.5">Memantau kontribusi commit aktif Robin, Hamdan, dan Nathanael langsung dari GitHub.</p>
                 </div>
 
                 <!-- Tombol Refresh & Ganti Repo -->
-                <div class="flex items-center gap-2">
-                    <button id="btn-refresh-commits" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs rounded-md font-semibold transition flex items-center gap-1.5">
+                <div class="flex items-center gap-2 self-start sm:self-auto">
+                    <button id="btn-refresh-commits" class="px-2.5 sm:px-3 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs rounded-md font-semibold transition flex items-center gap-1.5">
                         <i class="fa-solid fa-arrows-rotate text-xs" id="refresh-icon"></i> Refresh
                     </button>
-                    <button id="btn-toggle-repo-setting" class="px-3 py-1.5 bg-slate-900 hover:bg-slate-800 text-white text-xs rounded-md font-semibold transition flex items-center gap-1.5 shadow-xs">
+                    <button id="btn-toggle-repo-setting" class="px-2.5 sm:px-3 py-1 bg-slate-900 hover:bg-slate-800 text-white text-xs rounded-md font-semibold transition flex items-center gap-1.5 shadow-xs">
                         <i class="fa-regular fa-folder-gear text-xs"></i> Set Repo
                     </button>
                 </div>
             </div>
 
             <!-- Form Edit Repo GitHub (Bisa di-toggle) -->
-            <div id="repo-setting-box" class="hidden bg-slate-50 border border-slate-200 rounded-lg p-3.5 space-y-2">
-                <label class="block text-xs font-semibold text-slate-700">Repositori GitHub Target (format: username/nama-repo):</label>
-                <div class="flex items-center gap-2">
+            <div id="repo-setting-box" class="hidden bg-slate-50 border border-slate-200 rounded-lg p-3 sm:p-3.5 space-y-2">
+                <label class="block text-xs font-semibold text-slate-700">Repositori GitHub Target:</label>
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
                     <input type="text" id="input-github-repo" value="robinsyaifuddin/dlw-tugas-ra-122400001" placeholder="contoh: username/dlw-tugas-ra-122400001" class="flex-1 bg-white border border-slate-300 rounded-md px-3 py-1.5 text-xs text-slate-900 font-mono focus:outline-none focus:ring-1 focus:ring-slate-900">
-                    <button id="btn-save-repo" class="px-3 py-1.5 bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold rounded-md transition">Terapkan</button>
+                    <button id="btn-save-repo" class="px-3 py-1.5 bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold rounded-md transition shrink-0">Terapkan</button>
                 </div>
             </div>
 
             <!-- Container List Commit Live -->
-            <div id="commits-container" class="space-y-2.5">
+            <div id="commits-container" class="space-y-2">
                 <div class="py-8 text-center text-slate-400 text-xs flex items-center justify-center gap-2">
                     <i class="fa-solid fa-circle-notch fa-spin text-sm"></i>
                     <span>Menghubungkan ke GitHub REST API...</span>
@@ -246,42 +255,42 @@
             </div>
         </div>
 
-        <!-- Section Riwayat Catatan Kerja Tim (INTERAKTIF & HISTORIS) -->
-        <div class="bg-white rounded-xl border border-slate-200/80 p-6 shadow-subtle space-y-5">
-            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+        <!-- Section Riwayat Catatan Kerja Tim (THREADED COMMENTS & LOGBOOK) -->
+        <div class="bg-white rounded-xl border border-slate-200/80 p-4 sm:p-6 shadow-subtle space-y-5">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-3">
                 <div>
                     <h3 class="text-sm font-bold text-slate-900 flex items-center gap-2">
-                        <i class="fa-regular fa-clipboard-list text-slate-800"></i>
-                        Logbook & Riwayat Catatan Kerja Tim
+                        <i class="fa-regular fa-comments text-slate-800"></i>
+                        Logbook Diskusi & Catatan Tim
                     </h3>
-                    <p class="text-xs text-slate-500 mt-0.5">Catatan terekam historis beserta nama pembuat, tanggal, waktu, dan perangkat.</p>
+                    <p class="text-[11px] sm:text-xs text-slate-500 mt-0.5">Catatan terekam historis dan anggota tim bisa saling membalas / berdiskusi.</p>
                 </div>
-                <span id="notes-status" class="text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-200 hidden">
-                    <i class="fa-solid fa-check"></i> Catatan berhasil ditambahkan!
+                <span id="notes-status" class="text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-200 hidden self-start sm:self-auto">
+                    <i class="fa-solid fa-check"></i> Berhasil disimpan!
                 </span>
             </div>
 
-            <!-- Form Tambah Catatan Baru -->
-            <div class="bg-slate-50/70 border border-slate-200 rounded-lg p-4 space-y-3">
-                <div class="flex flex-wrap items-center justify-between gap-2">
+            <!-- Form Tambah Catatan Utama -->
+            <div class="bg-slate-50/70 border border-slate-200 rounded-lg p-3.5 sm:p-4 space-y-3">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                     <div class="flex items-center gap-2">
-                        <label class="text-xs font-semibold text-slate-700">Penulis:</label>
-                        <select id="note-author-input" class="bg-white border border-slate-300 rounded-md px-2.5 py-1 text-xs text-slate-900 font-medium focus:outline-none focus:ring-1 focus:ring-slate-900">
+                        <label class="text-xs font-semibold text-slate-700 shrink-0">Penulis:</label>
+                        <select id="note-author-input" class="bg-white border border-slate-300 rounded-md px-2 py-1 text-xs text-slate-900 font-medium focus:outline-none focus:ring-1 focus:ring-slate-900 w-full sm:w-auto">
                             <option value="Robin Syaifuddin (Ketua)">Robin Syaifuddin (Ketua)</option>
                             <option value="M. Hamdan Al Ghifari">M. Hamdan Al Ghifari</option>
                             <option value="Nathanael Hasiholan T.">Nathanael Hasiholan T.</option>
                             <option value="Tim Navigli">Tim Navigli (Bersama)</option>
                         </select>
                     </div>
-                    <button id="add-note-btn" class="px-3.5 py-1.5 bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold rounded-md transition shadow-xs flex items-center gap-1.5">
-                        <i class="fa-solid fa-plus text-xs"></i> Tambah Catatan Baru
+                    <button id="add-note-btn" class="px-3 py-1.5 bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold rounded-md transition shadow-xs flex items-center justify-center gap-1.5 shrink-0">
+                        <i class="fa-solid fa-plus text-xs"></i> Tambah Catatan
                     </button>
                 </div>
-                <textarea id="team-notes-input" rows="3" class="w-full bg-white border border-slate-300 rounded-lg p-3 text-xs text-slate-800 focus:outline-none focus:ring-1 focus:ring-slate-900 leading-relaxed font-sans" placeholder="Tuliskan catatan kerja, keputusan teknis, atau temuan eksperimen di sini..."></textarea>
+                <textarea id="team-notes-input" rows="3" class="w-full bg-white border border-slate-300 rounded-lg p-3 text-xs text-slate-800 focus:outline-none focus:ring-1 focus:ring-slate-900 leading-relaxed font-sans" placeholder="Tuliskan catatan kerja atau instruksi pembagian tugas di sini..."></textarea>
             </div>
 
-            <!-- Feed Riwayat Catatan -->
-            <div class="space-y-3" id="notes-history-container">
+            <!-- Feed Riwayat Catatan & Komentar Saling Balas -->
+            <div class="space-y-4" id="notes-history-container">
                 <div class="py-4 text-center text-slate-400 text-xs">Memuat riwayat catatan...</div>
             </div>
         </div>
@@ -293,20 +302,19 @@
         <p>Studi Ablasi Deep Learning · Kecerdasan Buatan RA ITERA · Tim Navigli 2026</p>
     </footer>
 
-    <!-- Script Render State, Audit Trail & Realtime Fetch -->
+    <!-- Script Render State, Audit Trail, Threaded Replies & Realtime Fetch -->
     <script>
         let currentRepo = "robinsyaifuddin/dlw-tugas-ra-122400001";
-        let clientIP = "Memeriksa IP...";
-        let globalState = { tasks: {}, audit_trail: {}, notes: "" };
+        let clientIP = "127.0.0.1";
+        let globalState = { tasks: {}, audit_trail: {}, notes_history: [] };
 
-        // Deteksi Device & Browser
         function getDeviceDescriptor() {
             const ua = navigator.userAgent;
-            let os = "Desktop PC";
-            if (/android/i.test(ua)) os = "Android Mobile";
-            else if (/iPad|iPhone|iPod/.test(ua)) os = "iOS Device";
-            else if (/Win/i.test(ua)) os = "Windows PC";
-            else if (/Mac/i.test(ua)) os = "Mac OS";
+            let os = "Desktop";
+            if (/android/i.test(ua)) os = "Android";
+            else if (/iPad|iPhone|iPod/.test(ua)) os = "iOS";
+            else if (/Win/i.test(ua)) os = "Windows";
+            else if (/Mac/i.test(ua)) os = "Mac";
             else if (/Linux/i.test(ua)) os = "Linux";
 
             let browser = "Browser";
@@ -318,11 +326,10 @@
             return `${os} · ${browser}`;
         }
 
-        // Ambil IP Publik secara otomatis
         fetch('https://api.ipify.org?format=json')
             .then(res => res.json())
             .then(data => { clientIP = data.ip; })
-            .catch(() => { clientIP = "127.0.0.1 (Network Client)"; });
+            .catch(() => { clientIP = "127.0.0.1"; });
 
         const phaseDefinitions = [
             {
@@ -416,15 +423,15 @@
 
             let html = '';
             phaseDefinitions.forEach((phase, index) => {
-                const ptClass = index > 0 ? 'pt-6' : '';
+                const ptClass = index > 0 ? 'pt-5 sm:pt-6' : '';
                 html += `
-                <section id="${phase.id}" class="${ptClass} space-y-4">
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-2.5">
-                            <span class="w-6 h-6 rounded-full bg-slate-100 text-slate-800 text-xs font-bold flex items-center justify-center border border-slate-300">${phase.number}</span>
-                            <h3 class="text-sm font-bold text-slate-900">${phase.title}</h3>
+                <section id="${phase.id}" class="${ptClass} space-y-3 sm:space-y-4">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                        <div class="flex items-center gap-2">
+                            <span class="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-slate-100 text-slate-800 text-[10px] sm:text-xs font-bold flex items-center justify-center border border-slate-300 shrink-0">${phase.number}</span>
+                            <h3 class="text-xs sm:text-sm font-bold text-slate-900">${phase.title}</h3>
                         </div>
-                        <span class="text-xs font-medium text-slate-400">${phase.meta}</span>
+                        <span class="text-[10px] sm:text-xs font-medium text-slate-400 pl-7 sm:pl-0">${phase.meta}</span>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5">
                 `;
@@ -438,17 +445,17 @@
                     const auditText = log ? `Dicentang: ${log.ip} (${log.device}) • ${log.time}` : 'Belum selesai';
 
                     html += `
-                    <label class="flex flex-col justify-between p-3 rounded-lg border border-slate-200/80 bg-white hover:border-slate-300 cursor-pointer transition select-none">
-                        <div class="flex items-start gap-3">
-                            <input type="checkbox" class="task-checkbox mt-0.5 h-4 w-4 rounded border-slate-300 text-slate-900 focus:ring-0 cursor-pointer" data-id="${key}" ${isDone ? 'checked' : ''}>
-                            <div class="min-w-0">
-                                <span class="text-xs font-medium text-slate-800 leading-snug ${isDone ? 'line-through text-slate-400' : ''}">
+                    <label class="flex flex-col justify-between p-2.5 sm:p-3 rounded-lg border border-slate-200/80 bg-white hover:border-slate-300 cursor-pointer transition select-none">
+                        <div class="flex items-start gap-2.5 sm:gap-3">
+                            <input type="checkbox" class="task-checkbox mt-0.5 h-4 w-4 rounded border-slate-300 text-slate-900 focus:ring-0 cursor-pointer shrink-0" data-id="${key}" ${isDone ? 'checked' : ''}>
+                            <div class="min-w-0 flex-1">
+                                <span class="text-xs font-medium text-slate-800 leading-snug break-words ${isDone ? 'line-through text-slate-400' : ''}">
                                     ${label}
                                 </span>
                                 ${isDone ? `
-                                    <div class="text-[10px] text-slate-400 font-mono mt-1 flex items-center gap-1">
-                                        <i class="fa-solid fa-clock-rotate-left text-[9px] text-emerald-600"></i>
-                                        <span>${auditText}</span>
+                                    <div class="text-[9px] sm:text-[10px] text-slate-400 font-mono mt-1 flex items-center gap-1 flex-wrap">
+                                        <i class="fa-solid fa-clock-rotate-left text-[9px] text-emerald-600 shrink-0"></i>
+                                        <span class="break-all">${auditText}</span>
                                     </div>
                                 ` : ''}
                             </div>
@@ -469,7 +476,6 @@
             document.getElementById('progress-bar').style.width = pct + '%';
             document.getElementById('progress-text').innerText = `${completed} / ${total} Selesai (${pct}%)`;
 
-            // Bind Event Listener Checkbox
             document.querySelectorAll('.task-checkbox').forEach(cb => {
                 cb.addEventListener('change', function() {
                     const taskId = this.dataset.id;
@@ -486,10 +492,8 @@
                         delete globalState.audit_trail[taskId];
                     }
 
-                    // Simpan ke localStorage lokal per browser
                     localStorage.setItem('dlw_dashboard_state', JSON.stringify(globalState));
 
-                    // Kirim ke backend jika tersedia (PHP / API)
                     fetch('index.php', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -501,24 +505,174 @@
             });
         }
 
+        // Render Riwayat Catatan & Komentar Saling Balas
+        function renderNotesHistory() {
+            const container = document.getElementById('notes-history-container');
+            const history = globalState.notes_history || [];
+
+            if (history.length === 0) {
+                container.innerHTML = '<div class="py-4 text-center text-slate-400 text-xs">Belum ada riwayat catatan. Tuliskan catatan pertama tim Anda di atas!</div>';
+                return;
+            }
+
+            let html = '';
+            history.forEach((item, index) => {
+                const authorInitial = item.author.charAt(0).toUpperCase();
+                const replies = item.replies || [];
+
+                html += `
+                <div class="p-3.5 sm:p-4 rounded-xl border border-slate-200 bg-slate-50/70 transition space-y-3" id="note-card-${item.id || index}">
+                    <div class="flex items-center justify-between text-xs gap-2">
+                        <div class="flex items-center gap-2 min-w-0">
+                            <span class="w-6 h-6 rounded-full bg-slate-900 text-white font-bold text-[11px] flex items-center justify-center shrink-0">
+                                ${authorInitial}
+                            </span>
+                            <span class="font-bold text-slate-900 truncate">${item.author}</span>
+                            <span class="text-slate-400 shrink-0">•</span>
+                            <span class="text-[10px] sm:text-[11px] text-slate-500 font-mono shrink-0">${item.time}</span>
+                        </div>
+                        <span class="text-[10px] text-slate-400 font-mono hidden md:inline-block shrink-0">${item.device || ''}</span>
+                    </div>
+
+                    <p class="text-xs text-slate-700 leading-relaxed pl-8 whitespace-pre-wrap break-words">${item.text}</p>
+
+                    <!-- Tombol Balas & Section Balasan -->
+                    <div class="pl-8 pt-1 flex items-center gap-3">
+                        <button onclick="toggleReplyBox('${item.id || index}')" class="text-[11px] font-semibold text-slate-600 hover:text-slate-900 flex items-center gap-1.5 transition">
+                            <i class="fa-solid fa-reply text-[10px]"></i>
+                            <span>Balas (${replies.length})</span>
+                        </button>
+                    </div>
+
+                    <!-- Container Balasan Komentar (Threaded) -->
+                    <div class="pl-8 space-y-2.5 pt-1">
+                        ${replies.map(reply => `
+                            <div class="p-2.5 sm:p-3 rounded-lg bg-white border border-slate-200/80 space-y-1">
+                                <div class="flex items-center justify-between text-[11px] gap-2">
+                                    <div class="flex items-center gap-1.5">
+                                        <span class="font-bold text-slate-900">${reply.author}</span>
+                                        <span class="text-slate-400">•</span>
+                                        <span class="text-[10px] text-slate-500 font-mono">${reply.time}</span>
+                                    </div>
+                                    <span class="text-[9px] text-slate-400 font-mono hidden sm:inline">${reply.device || ''}</span>
+                                </div>
+                                <p class="text-xs text-slate-700 leading-relaxed break-words">${reply.text}</p>
+                            </div>
+                        `).join('')}
+
+                        <!-- Form Balas Komentar (Hidden by default) -->
+                        <div id="reply-box-${item.id || index}" class="hidden bg-white p-3 rounded-lg border border-slate-300 space-y-2 mt-2">
+                            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-1.5">
+                                <span class="text-[11px] font-semibold text-slate-700">Balas sebagai:</span>
+                                <select id="reply-author-${item.id || index}" class="bg-slate-50 border border-slate-300 rounded px-2 py-0.5 text-xs text-slate-800 font-medium">
+                                    <option value="M. Hamdan Al Ghifari">M. Hamdan Al Ghifari</option>
+                                    <option value="Nathanael Hasiholan T.">Nathanael Hasiholan T.</option>
+                                    <option value="Robin Syaifuddin (Ketua)">Robin Syaifuddin (Ketua)</option>
+                                </select>
+                            </div>
+                            <textarea id="reply-text-${item.id || index}" rows="2" class="w-full bg-slate-50/50 border border-slate-200 rounded p-2 text-xs text-slate-800 focus:bg-white focus:outline-none focus:ring-1 focus:ring-slate-900" placeholder="Ketik balasan untuk ${item.author}..."></textarea>
+                            <div class="flex justify-end gap-2">
+                                <button onclick="toggleReplyBox('${item.id || index}')" class="px-2.5 py-1 text-xs text-slate-500 hover:text-slate-800">Batal</button>
+                                <button onclick="submitReply('${item.id || index}')" class="px-3 py-1 bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold rounded shadow-xs">Kirim</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                `;
+            });
+
+            container.innerHTML = html;
+        }
+
+        // Toggle Tampilan Kotak Balasan
+        window.toggleReplyBox = function(noteId) {
+            const box = document.getElementById(`reply-box-${noteId}`);
+            if (box) box.classList.toggle('hidden');
+        };
+
+        // Kirim Balasan Komentar
+        window.submitReply = function(noteId) {
+            const replyInput = document.getElementById(`reply-text-${noteId}`);
+            const text = replyInput.value.trim();
+            if (!text) return;
+
+            const author = document.getElementById(`reply-author-${noteId}`).value;
+            const newReply = {
+                id: 'reply-' + Date.now(),
+                author: author,
+                text: text,
+                device: getDeviceDescriptor(),
+                time: getWIBTime()
+            };
+
+            const note = globalState.notes_history.find(n => (n.id || '') === noteId || String(n.id) === String(noteId));
+            if (note) {
+                if (!note.replies) note.replies = [];
+                note.replies.push(newReply);
+            } else if (globalState.notes_history[noteId]) {
+                if (!globalState.notes_history[noteId].replies) globalState.notes_history[noteId].replies = [];
+                globalState.notes_history[noteId].replies.push(newReply);
+            }
+
+            localStorage.setItem('dlw_dashboard_state', JSON.stringify(globalState));
+            renderNotesHistory();
+
+            // Sync ke backend PHP jika di lokal
+            fetch('index.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: `action=add_reply&note_id=${encodeURIComponent(noteId)}&author=${encodeURIComponent(author)}&text=${encodeURIComponent(text)}&device=${encodeURIComponent(getDeviceDescriptor())}&time=${encodeURIComponent(getWIBTime())}`
+            }).catch(() => {});
+        };
+
+        // Tambah Catatan Utama Baru
+        document.getElementById('add-note-btn').addEventListener('click', function() {
+            const inputEl = document.getElementById('team-notes-input');
+            const text = inputEl.value.trim();
+            if (!text) return;
+
+            const author = document.getElementById('note-author-input').value;
+            const newNote = {
+                id: 'note-' + Date.now(),
+                author: author,
+                text: text,
+                device: getDeviceDescriptor(),
+                time: getWIBTime(),
+                replies: []
+            };
+
+            if (!globalState.notes_history) globalState.notes_history = [];
+            globalState.notes_history.unshift(newNote);
+
+            localStorage.setItem('dlw_dashboard_state', JSON.stringify(globalState));
+            inputEl.value = '';
+
+            const statusEl = document.getElementById('notes-status');
+            statusEl.classList.remove('hidden');
+            setTimeout(() => statusEl.classList.add('hidden'), 2500);
+
+            renderNotesHistory();
+
+            fetch('index.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: `action=add_note_history&author=${encodeURIComponent(author)}&text=${encodeURIComponent(text)}&device=${encodeURIComponent(getDeviceDescriptor())}&time=${encodeURIComponent(getWIBTime())}`
+            }).catch(() => {});
+        });
+
         function loadDashboardState() {
-            // Cek localStorage browser terlebih dahulu
             const localSaved = localStorage.getItem('dlw_dashboard_state');
             if (localSaved) {
-                try {
-                    globalState = JSON.parse(localSaved);
-                } catch(e) {}
+                try { globalState = JSON.parse(localSaved); } catch(e) {}
             }
 
             fetch('dashboard_state.json?t=' + Date.now())
                 .then(res => res.json())
                 .then(serverState => {
-                    // Gabungkan state server & local
                     globalState.github_repo = serverState.github_repo || globalState.github_repo || currentRepo;
                     globalState.tasks = { ...serverState.tasks, ...globalState.tasks };
                     globalState.audit_trail = { ...serverState.audit_trail, ...globalState.audit_trail };
-                    globalState.notes = globalState.notes || serverState.notes || "";
-                    globalState.notes_history = serverState.notes_history || globalState.notes_history || [];
+                    globalState.notes_history = globalState.notes_history && globalState.notes_history.length > 0 ? globalState.notes_history : (serverState.notes_history || []);
 
                     if (globalState.github_repo) {
                         currentRepo = globalState.github_repo;
@@ -542,13 +696,13 @@
             const now = new Date();
             const seconds = Math.floor((now - date) / 1000);
 
-            if (seconds < 60) return `${seconds} detik yang lalu`;
+            if (seconds < 60) return `${seconds} dtk lalu`;
             const minutes = Math.floor(seconds / 60);
-            if (minutes < 60) return `${minutes} menit yang lalu`;
+            if (minutes < 60) return `${minutes} mnt lalu`;
             const hours = Math.floor(minutes / 60);
-            if (hours < 24) return `${hours} jam yang lalu`;
+            if (hours < 24) return `${hours} jam lalu`;
             const days = Math.floor(hours / 24);
-            return `${days} hari yang lalu`;
+            return `${days} hari lalu`;
         }
 
         function loadGitHubCommits() {
@@ -558,13 +712,13 @@
 
             fetch(`https://api.github.com/repos/${currentRepo}/commits?per_page=8`)
                 .then(res => {
-                    if (!res.ok) throw new Error('Repositori tidak ditemukan atau belum dibuat publik di GitHub.');
+                    if (!res.ok) throw new Error('Repositori tidak ditemukan atau belum publik.');
                     return res.json();
                 })
                 .then(commits => {
                     icon.classList.remove('fa-spin');
                     if (!Array.isArray(commits) || commits.length === 0) {
-                        container.innerHTML = `<div class="py-6 text-center text-slate-400 text-xs">Belum ada commit yang tercatat di repositori ini.</div>`;
+                        container.innerHTML = `<div class="py-6 text-center text-slate-400 text-xs">Belum ada commit yang tercatat.</div>`;
                         return;
                     }
 
@@ -578,20 +732,20 @@
                         const dateFormatted = timeAgo(item.commit.author.date);
 
                         html += `
-                        <div class="flex items-center justify-between p-3 rounded-lg border border-slate-200/80 bg-slate-50/50 hover:bg-slate-50 transition">
-                            <div class="flex items-center gap-3 min-w-0">
-                                <img src="${avatarUrl}" alt="${authorName}" class="w-8 h-8 rounded-full border border-slate-200 shrink-0">
+                        <div class="flex items-center justify-between p-2.5 sm:p-3 rounded-lg border border-slate-200/80 bg-slate-50/50 hover:bg-slate-50 transition gap-2">
+                            <div class="flex items-center gap-2.5 min-w-0">
+                                <img src="${avatarUrl}" alt="${authorName}" class="w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-slate-200 shrink-0">
                                 <div class="min-w-0">
-                                    <div class="text-xs font-semibold text-slate-900 truncate">${commitMsg}</div>
-                                    <div class="text-[11px] text-slate-500 flex items-center gap-2">
-                                        <span class="font-medium text-slate-700">${authorName}</span>
+                                    <div class="text-xs font-semibold text-slate-900 truncate max-w-[190px] sm:max-w-md">${commitMsg}</div>
+                                    <div class="text-[10px] sm:text-[11px] text-slate-500 flex items-center gap-1.5">
+                                        <span class="font-medium text-slate-700 truncate max-w-[100px]">${authorName}</span>
                                         <span>•</span>
-                                        <span>${dateFormatted}</span>
+                                        <span class="shrink-0">${dateFormatted}</span>
                                     </div>
                                 </div>
                             </div>
-                            <a href="${commitUrl}" target="_blank" rel="noopener noreferrer" class="ml-3 shrink-0 font-mono text-[11px] font-semibold text-slate-600 bg-white hover:text-slate-900 hover:border-slate-400 border border-slate-200 px-2 py-1 rounded transition flex items-center gap-1">
-                                <i class="fa-solid fa-code-commit text-[10px]"></i> ${commitSha}
+                            <a href="${commitUrl}" target="_blank" rel="noopener noreferrer" class="shrink-0 font-mono text-[10px] sm:text-[11px] font-semibold text-slate-600 bg-white hover:text-slate-900 border border-slate-200 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded transition flex items-center gap-1">
+                                <i class="fa-solid fa-code-commit text-[9px]"></i> ${commitSha}
                             </a>
                         </div>
                         `;
@@ -602,10 +756,10 @@
                 .catch(err => {
                     icon.classList.remove('fa-spin');
                     container.innerHTML = `
-                    <div class="py-6 text-center text-xs text-slate-500 bg-slate-50 border border-slate-200 rounded-lg p-4">
+                    <div class="py-4 text-center text-xs text-slate-500 bg-slate-50 border border-slate-200 rounded-lg p-3">
                         <i class="fa-regular fa-circle-exclamation text-amber-500 text-sm mb-1"></i>
                         <p class="font-semibold text-slate-700">Status Repositori: [ ${currentRepo} ]</p>
-                        <p class="text-[11px] text-slate-400 mt-1">${err.message}</p>
+                        <p class="text-[11px] text-slate-400 mt-0.5">${err.message}</p>
                     </div>
                     `;
                 });
@@ -626,75 +780,6 @@
                 document.getElementById('repo-setting-box').classList.add('hidden');
                 loadGitHubCommits();
             }
-        });
-
-        function renderNotesHistory() {
-            const container = document.getElementById('notes-history-container');
-            const history = globalState.notes_history || [];
-
-            if (history.length === 0) {
-                container.innerHTML = '<div class="py-4 text-center text-slate-400 text-xs">Belum ada riwayat catatan. Tuliskan catatan pertama tim Anda di atas!</div>';
-                return;
-            }
-
-            let html = '';
-            history.forEach(item => {
-                const authorInitial = item.author.charAt(0).toUpperCase();
-                html += `
-                <div class="p-4 rounded-lg border border-slate-200 bg-slate-50/60 hover:bg-slate-50 transition space-y-2">
-                    <div class="flex items-center justify-between text-xs">
-                        <div class="flex items-center gap-2">
-                            <span class="w-6 h-6 rounded-full bg-slate-900 text-white font-bold text-[11px] flex items-center justify-center shrink-0">
-                                ${authorInitial}
-                            </span>
-                            <span class="font-bold text-slate-900">${item.author}</span>
-                            <span class="text-slate-400">•</span>
-                            <span class="text-[11px] text-slate-500 font-mono">${item.time}</span>
-                        </div>
-                        <span class="text-[10px] text-slate-400 font-mono hidden sm:inline-block">${item.device || ''}</span>
-                    </div>
-                    <p class="text-xs text-slate-700 leading-relaxed pl-8 whitespace-pre-wrap">${item.text}</p>
-                </div>
-                `;
-            });
-
-            container.innerHTML = html;
-        }
-
-        // Tambah Catatan Tim Baru
-        document.getElementById('add-note-btn').addEventListener('click', function() {
-            const inputEl = document.getElementById('team-notes-input');
-            const text = inputEl.value.trim();
-            if (!text) return;
-
-            const author = document.getElementById('note-author-input').value;
-            const newNote = {
-                id: 'note-' + Date.now(),
-                author: author,
-                text: text,
-                device: getDeviceDescriptor(),
-                time: getWIBTime()
-            };
-
-            if (!globalState.notes_history) globalState.notes_history = [];
-            globalState.notes_history.unshift(newNote); // Catatan baru di paling atas
-
-            // Simpan ke localStorage per browser
-            localStorage.setItem('dlw_dashboard_state', JSON.stringify(globalState));
-            inputEl.value = '';
-
-            const statusEl = document.getElementById('notes-status');
-            statusEl.classList.remove('hidden');
-            setTimeout(() => statusEl.classList.add('hidden'), 2500);
-
-            renderNotesHistory();
-
-            // Sync ke backend PHP jika di lokal
-            fetch('index.php', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: `action=add_note_history&author=${encodeURIComponent(author)}&text=${encodeURIComponent(text)}&device=${encodeURIComponent(getDeviceDescriptor())}&time=${encodeURIComponent(getWIBTime())}`
-            }).catch(() => {});
         });
     </script>
 </body>
