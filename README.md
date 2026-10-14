@@ -24,6 +24,13 @@ uv run jupyter lab
 
 Buka `tugas_ablasi.ipynb`, pastikan variabel `LOKASI_KELOMPOK = 1`, lalu jalankan sel eksperimen. Semua run otomatis tercatat ke `hasil/ablasi.csv`.
 
+## Perangkat & Alat Pengembangan
+Proyek ini dikembangkan dan diuji menggunakan kombinasi perangkat lunak dan lingkungan kerja berikut:
+* **Code Editor / IDE:** [Antigravity IDE](https://antigravity.google.com) — Lingkungan pengembangan utama dengan dukungan integrasi agentic AI untuk efisiensi penulisan dan analisis kode.
+* **Sistem Operasi:** Windows 11 (64-bit)
+* **Terminal / Shell:** PowerShell / Bash
+* **Version Control:** Git & GitHub
+
 ## Struktur Repositori
 
 ```
