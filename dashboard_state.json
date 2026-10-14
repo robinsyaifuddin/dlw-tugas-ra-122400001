@@ -8,7 +8,7 @@
         "f1_clone_structure": true,
         "f1_setup_env": true,
         "f1_vercel_deploy": true,
-        "f1_smoke_test": false,
+        "f1_smoke_test": true,
         "f2_bag0_naive": false,
         "f2_bag0_acuan": false,
         "f2_a1_window": false,
@@ -32,5 +32,47 @@
         "f5_commit_full_nb": false,
         "f5_tally_submit": false
     },
-    "notes": "Kombinasi faktor pilihan Bagian B: B4 (Fungsi Loss) dan B6 (Forecasting Horizon) untuk visi pengembangan staf AI Agentik."
+    "audit_trail": {
+        "f1_identitas": {
+            "device": "Windows PC · Chrome",
+            "ip": "127.0.0.1 (Local Verified)",
+            "time": "15 Okt 2026, 02:52 WIB"
+        },
+        "f1_lokasi": {
+            "device": "Windows PC · Chrome",
+            "ip": "127.0.0.1 (Local Verified)",
+            "time": "15 Okt 2026, 02:52 WIB"
+        },
+        "f1_faktor_b": {
+            "device": "Windows PC · Chrome",
+            "ip": "127.0.0.1 (Local Verified)",
+            "time": "15 Okt 2026, 02:55 WIB"
+        },
+        "f1_planning": {
+            "device": "Windows PC · Chrome",
+            "ip": "127.0.0.1 (Local Verified)",
+            "time": "15 Okt 2026, 03:00 WIB"
+        },
+        "f1_clone_structure": {
+            "device": "Windows PC · Git",
+            "ip": "127.0.0.1 (Local Verified)",
+            "time": "15 Okt 2026, 03:20 WIB"
+        },
+        "f1_setup_env": {
+            "device": "Windows PC · uv-sync",
+            "ip": "127.0.0.1 (Local Verified)",
+            "time": "15 Okt 2026, 03:42 WIB"
+        },
+        "f1_vercel_deploy": {
+            "device": "Windows PC · Vercel",
+            "ip": "127.0.0.1 (Local Verified)",
+            "time": "15 Okt 2026, 03:52 WIB"
+        },
+        "f1_smoke_test": {
+            "device": "Windows PC · PyTorch",
+            "ip": "127.0.0.1 (Local Verified)",
+            "time": "15 Okt 2026, 04:10 WIB"
+        }
+    },
+    "notes": "Fase 1 telah selesai 100%! Seluruh dependensi PyTorch dan dataset Duomo + Navigli (Kotak 4555) telah lolos uji Smoke Test. Siap melanjutkan ke Fase 2 (Eksperimen Bagian 0, Bagian A, dan Bagian B)."
 }

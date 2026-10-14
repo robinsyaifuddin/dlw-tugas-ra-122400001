@@ -72,6 +72,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
         }
     }
     
+    if ($_POST['action'] === 'toggle_task_audit') {
+        $taskId = $_POST['task_id'] ?? '';
+        $checked = !empty($_POST['checked']);
+        $device = $_POST['device'] ?? 'Unknown Device';
+        $ip = $_POST['ip'] ?? ($_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR']);
+        $time = $_POST['time'] ?? date('d M Y, H:i') . ' WIB';
+
+        if (!isset($state['tasks'])) $state['tasks'] = [];
+        if (!isset($state['audit_trail'])) $state['audit_trail'] = [];
+
+        $state['tasks'][$taskId] = $checked;
+        if ($checked) {
+            $state['audit_trail'][$taskId] = [
+                'device' => $device,
+                'ip' => $ip,
+                'time' => $time
+            ];
+        } else {
+            unset($state['audit_trail'][$taskId]);
+        }
+
+        @file_put_contents($dataFilePath, json_encode($state, JSON_PRETTY_PRINT));
+        echo json_encode(['status' => 'success', 'taskId' => $taskId, 'checked' => $checked]);
+        exit;
+    }
+    
     if ($_POST['action'] === 'save_notes') {
         $state['notes'] = $_POST['notes'] ?? '';
         @file_put_contents($dataFilePath, json_encode($state, JSON_PRETTY_PRINT));
