@@ -282,23 +282,20 @@
                 </div>
             </div>
 
-            <!-- Form Tambah Catatan Utama -->
-            <div class="bg-slate-50/70 border border-slate-200 rounded-lg p-3.5 sm:p-4 space-y-3">
-                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                    <div class="flex items-center gap-2">
-                        <label class="text-xs font-semibold text-slate-700 shrink-0">Penulis:</label>
-                        <select id="note-author-input" class="bg-white border border-slate-300 rounded-md px-2 py-1 text-xs text-slate-900 font-medium focus:outline-none focus:ring-1 focus:ring-slate-900 w-full sm:w-auto">
-                            <option value="Robin Syaifuddin (Ketua)">Robin Syaifuddin (Ketua)</option>
-                            <option value="M. Hamdan Al Ghifari">M. Hamdan Al Ghifari</option>
-                            <option value="Nathanael Hasiholan T.">Nathanael Hasiholan T.</option>
-                            <option value="Tim Navigli">Tim Navigli (Bersama)</option>
-                        </select>
+            <!-- Bar Aksi Tambah Catatan Utama (Membuka Modal) -->
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 bg-slate-50/70 border border-slate-200 rounded-xl p-3.5 sm:p-4">
+                <div class="flex items-center gap-2.5">
+                    <span class="w-8 h-8 rounded-lg bg-slate-200/80 text-slate-700 flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-pen text-xs"></i>
+                    </span>
+                    <div>
+                        <div class="text-xs font-bold text-slate-800">Catatan Diskusi & Hasil Eksperimen</div>
+                        <div class="text-[11px] text-slate-500">Tuliskan progres baru atau koordinasi tugas kelompok.</div>
                     </div>
-                    <button id="add-note-btn" class="px-3 py-1.5 bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold rounded-md transition shadow-xs flex items-center justify-center gap-1.5 shrink-0">
-                        <i class="fa-solid fa-plus text-xs"></i> Tambah Catatan
-                    </button>
                 </div>
-                <textarea id="team-notes-input" rows="3" class="w-full bg-white border border-slate-300 rounded-lg p-3 text-xs text-slate-800 focus:outline-none focus:ring-1 focus:ring-slate-900 leading-relaxed font-sans" placeholder="Tuliskan catatan kerja atau instruksi pembagian tugas di sini..."></textarea>
+                <button onclick="openNoteModal()" class="px-3.5 py-2 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-lg transition shadow-xs flex items-center justify-center gap-1.5 shrink-0">
+                    <i class="fa-solid fa-plus text-xs"></i> Tulis Catatan Tim
+                </button>
             </div>
 
             <!-- Feed Riwayat Catatan & Komentar Saling Balas -->
@@ -308,6 +305,143 @@
         </div>
 
     </main>
+
+    <!-- MODAL 1: KONFIRMASI CENTANG CHECKLIST -->
+    <div id="modal-confirm-task" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-xs hidden transition-opacity">
+        <div class="bg-white rounded-2xl max-w-md w-full p-5 sm:p-6 shadow-2xl border border-slate-100 space-y-4 transform transition-all animate-in fade-in zoom-in-95">
+            <div class="flex items-start justify-between gap-3">
+                <div class="flex items-center gap-3">
+                    <div id="modal-task-icon-box" class="w-10 h-10 rounded-xl bg-slate-900 text-white flex items-center justify-center shrink-0">
+                        <i id="modal-task-icon" class="fa-solid fa-check text-sm"></i>
+                    </div>
+                    <div>
+                        <h4 id="modal-task-title" class="text-sm sm:text-base font-bold text-slate-900">Konfirmasi Penyelesaian</h4>
+                        <p class="text-[11px] text-slate-500">Perubahan akan disimpan dan disinkronkan ke tim.</p>
+                    </div>
+                </div>
+                <button onclick="closeTaskModal()" class="text-slate-400 hover:text-slate-700 p-1 rounded-lg">
+                    <i class="fa-solid fa-xmark text-sm"></i>
+                </button>
+            </div>
+
+            <div class="p-3.5 bg-slate-50 border border-slate-200/80 rounded-xl space-y-2">
+                <p id="modal-task-label" class="text-xs font-semibold text-slate-800 leading-snug"></p>
+                <div class="text-[10px] text-slate-500 space-y-1 font-mono pt-1 border-t border-slate-200/60">
+                    <div class="flex items-center justify-between">
+                        <span>Status Baru:</span>
+                        <span id="modal-task-target-status" class="font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">Selesai</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span>Perangkat:</span>
+                        <span id="modal-task-device" class="text-slate-700 font-sans"></span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span>Waktu Realtime:</span>
+                        <span id="modal-task-time" class="text-slate-700 font-sans"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-end gap-2.5 pt-1">
+                <button onclick="closeTaskModal()" class="px-3.5 py-2 text-xs font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-lg transition">Batal</button>
+                <button id="modal-task-btn-confirm" class="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-lg shadow-sm transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-floppy-disk text-xs"></i>
+                    <span>Simpan Perubahan</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 2: TAMBAH CATATAN KERJA TIM -->
+    <div id="modal-add-note" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-xs hidden transition-opacity">
+        <div class="bg-white rounded-2xl max-w-lg w-full p-5 sm:p-6 shadow-2xl border border-slate-100 space-y-4 transform transition-all animate-in fade-in zoom-in-95">
+            <div class="flex items-start justify-between gap-3">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-slate-900 text-white flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-pen-nib text-sm"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-sm sm:text-base font-bold text-slate-900">Tambah Catatan Tim</h4>
+                        <p class="text-[11px] text-slate-500">Tersimpan publik & dapat dibalas oleh rekan satu kelompok.</p>
+                    </div>
+                </div>
+                <button onclick="closeNoteModal()" class="text-slate-400 hover:text-slate-700 p-1 rounded-lg">
+                    <i class="fa-solid fa-xmark text-sm"></i>
+                </button>
+            </div>
+
+            <div class="space-y-3">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Nama Anggota / Penulis:</label>
+                    <select id="modal-note-author" class="w-full bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-xs text-slate-900 font-medium focus:bg-white focus:outline-none focus:ring-1 focus:ring-slate-900">
+                        <option value="Robin Syaifuddin (Ketua)">Robin Syaifuddin (Ketua) - 122400001</option>
+                        <option value="M. Hamdan Al Ghifari">M. Hamdan Al Ghifari - 121400075</option>
+                        <option value="Nathanael Hasiholan T.">Nathanael Hasiholan T. - 122400053</option>
+                        <option value="Tim Navigli">Tim Navigli (Bersama)</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Isi Catatan Kerja / Temuan:</label>
+                    <textarea id="modal-note-text" rows="4" class="w-full bg-slate-50 border border-slate-300 rounded-lg p-3 text-xs text-slate-900 leading-relaxed focus:bg-white focus:outline-none focus:ring-1 focus:ring-slate-900 font-sans" placeholder="Tuliskan perkembangan eksperimen atau hasil analisis..."></textarea>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-end gap-2.5 pt-1">
+                <button onclick="closeNoteModal()" class="px-3.5 py-2 text-xs font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-lg transition">Batal</button>
+                <button id="modal-note-btn-save" onclick="submitModalNote()" class="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-lg shadow-sm transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-paper-plane text-xs"></i>
+                    <span>Simpan & Publikasikan</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 3: BALAS KOMENTAR / CATATAN -->
+    <div id="modal-add-reply" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-xs hidden transition-opacity">
+        <div class="bg-white rounded-2xl max-w-md w-full p-5 sm:p-6 shadow-2xl border border-slate-100 space-y-4 transform transition-all animate-in fade-in zoom-in-95">
+            <div class="flex items-start justify-between gap-3">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-slate-900 text-white flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-reply text-sm"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-sm sm:text-base font-bold text-slate-900">Balas Catatan Tim</h4>
+                        <p id="modal-reply-target-author" class="text-[11px] text-slate-500 truncate max-w-[200px]"></p>
+                    </div>
+                </div>
+                <button onclick="closeReplyModal()" class="text-slate-400 hover:text-slate-700 p-1 rounded-lg">
+                    <i class="fa-solid fa-xmark text-sm"></i>
+                </button>
+            </div>
+
+            <div class="p-3 bg-slate-50 border border-slate-200/80 rounded-xl">
+                <p id="modal-reply-parent-text" class="text-xs text-slate-600 italic line-clamp-3"></p>
+            </div>
+
+            <div class="space-y-3">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Balas sebagai:</label>
+                    <select id="modal-reply-author" class="w-full bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-xs text-slate-900 font-medium focus:bg-white focus:outline-none focus:ring-1 focus:ring-slate-900">
+                        <option value="M. Hamdan Al Ghifari">M. Hamdan Al Ghifari</option>
+                        <option value="Nathanael Hasiholan T.">Nathanael Hasiholan T.</option>
+                        <option value="Robin Syaifuddin (Ketua)">Robin Syaifuddin (Ketua)</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Tanggapan / Balasan Anda:</label>
+                    <textarea id="modal-reply-text" rows="3" class="w-full bg-slate-50 border border-slate-300 rounded-lg p-3 text-xs text-slate-900 leading-relaxed focus:bg-white focus:outline-none focus:ring-1 focus:ring-slate-900 font-sans" placeholder="Ketik tanggapan untuk diskusi ini..."></textarea>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-end gap-2.5 pt-1">
+                <button onclick="closeReplyModal()" class="px-3.5 py-2 text-xs font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-lg transition">Batal</button>
+                <button id="modal-reply-btn-save" onclick="submitModalReply()" class="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-lg shadow-sm transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-reply text-xs"></i>
+                    <span>Simpan & Kirim Balasan</span>
+                </button>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 text-center text-xs text-slate-400 font-medium">
@@ -489,33 +623,189 @@
             document.getElementById('progress-text').innerText = `${completed} / ${total} Selesai (${pct}%)`;
 
             document.querySelectorAll('.task-checkbox').forEach(cb => {
-                cb.addEventListener('change', function() {
+                cb.addEventListener('click', function(e) {
+                    e.preventDefault(); // Cegah centang langsung sebelum dikonfirmasi lewat modal
                     const taskId = this.dataset.id;
-                    const checked = this.checked;
-
-                    globalState.tasks[taskId] = checked;
-                    if (checked) {
-                        globalState.audit_trail[taskId] = {
-                            device: getDeviceDescriptor(),
-                            ip: clientIP,
-                            time: getWIBTime()
-                        };
-                    } else {
-                        delete globalState.audit_trail[taskId];
-                    }
-
-                    localStorage.setItem('dlw_dashboard_state', JSON.stringify(globalState));
-
-                    fetch('index.php', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                        body: `action=toggle_task_audit&task_id=${encodeURIComponent(taskId)}&checked=${checked ? 1 : 0}&device=${encodeURIComponent(getDeviceDescriptor())}&ip=${encodeURIComponent(clientIP)}&time=${encodeURIComponent(getWIBTime())}`
-                    }).catch(() => {});
-
-                    renderPhasesUI();
+                    const willBeChecked = !this.checked;
+                    openTaskModal(taskId, willBeChecked);
                 });
             });
         }
+
+        // --- SISTEM MODAL INTERAKTIF & REALTIME SYNC ---
+
+        let pendingTaskModal = null;
+
+        window.openTaskModal = function(taskId, willBeChecked) {
+            let taskLabel = '';
+            for (const p of phaseDefinitions) {
+                if (p.tasks[taskId]) {
+                    taskLabel = p.tasks[taskId];
+                    break;
+                }
+            }
+
+            pendingTaskModal = { taskId, willBeChecked };
+
+            const modal = document.getElementById('modal-confirm-task');
+            document.getElementById('modal-task-title').innerText = willBeChecked ? 'Konfirmasi Centang Tugas' : 'Batalkan Centang Tugas';
+            document.getElementById('modal-task-label').innerText = taskLabel || taskId;
+            
+            const statusBadge = document.getElementById('modal-task-target-status');
+            const iconBox = document.getElementById('modal-task-icon-box');
+            const icon = document.getElementById('modal-task-icon');
+
+            if (willBeChecked) {
+                statusBadge.className = 'font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded';
+                statusBadge.innerText = 'Selesai (Done)';
+                iconBox.className = 'w-10 h-10 rounded-xl bg-slate-900 text-white flex items-center justify-center shrink-0';
+                icon.className = 'fa-solid fa-check text-sm';
+            } else {
+                statusBadge.className = 'font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded';
+                statusBadge.innerText = 'Belum Selesai (Pending)';
+                iconBox.className = 'w-10 h-10 rounded-xl bg-amber-500 text-white flex items-center justify-center shrink-0';
+                icon.className = 'fa-solid fa-rotate-left text-sm';
+            }
+
+            document.getElementById('modal-task-device').innerText = getDeviceDescriptor();
+            document.getElementById('modal-task-time').innerText = getWIBTime();
+
+            modal.classList.remove('hidden');
+        };
+
+        window.closeTaskModal = function() {
+            document.getElementById('modal-confirm-task').classList.add('hidden');
+            pendingTaskModal = null;
+        };
+
+        document.getElementById('modal-task-btn-confirm').addEventListener('click', function() {
+            if (!pendingTaskModal) return;
+            const { taskId, willBeChecked } = pendingTaskModal;
+
+            globalState.tasks[taskId] = willBeChecked;
+            if (willBeChecked) {
+                globalState.audit_trail[taskId] = {
+                    device: getDeviceDescriptor(),
+                    ip: clientIP,
+                    time: getWIBTime()
+                };
+            } else {
+                delete globalState.audit_trail[taskId];
+            }
+
+            localStorage.setItem('dlw_dashboard_state', JSON.stringify(globalState));
+            renderPhasesUI();
+            closeTaskModal();
+
+            // Broadcast seketika ke tab & device lain
+            broadcastRealtimeUpdate();
+
+            fetch('index.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: `action=toggle_task_audit&task_id=${encodeURIComponent(taskId)}&checked=${willBeChecked ? 1 : 0}&device=${encodeURIComponent(getDeviceDescriptor())}&ip=${encodeURIComponent(clientIP)}&time=${encodeURIComponent(getWIBTime())}`
+            }).catch(() => {});
+        });
+
+        // MODAL TAMBAH CATATAN
+        window.openNoteModal = function() {
+            document.getElementById('modal-note-text').value = '';
+            document.getElementById('modal-add-note').classList.remove('hidden');
+        };
+
+        window.closeNoteModal = function() {
+            document.getElementById('modal-add-note').classList.add('hidden');
+        };
+
+        window.submitModalNote = function() {
+            const textEl = document.getElementById('modal-note-text');
+            const text = textEl.value.trim();
+            if (!text) return;
+
+            const author = document.getElementById('modal-note-author').value;
+            const newNote = {
+                id: 'note-' + Date.now(),
+                author: author,
+                text: text,
+                device: getDeviceDescriptor(),
+                time: getWIBTime(),
+                replies: []
+            };
+
+            if (!globalState.notes_history) globalState.notes_history = [];
+            globalState.notes_history.unshift(newNote);
+
+            localStorage.setItem('dlw_dashboard_state', JSON.stringify(globalState));
+            renderNotesHistory();
+            closeNoteModal();
+
+            const statusEl = document.getElementById('notes-status');
+            statusEl.classList.remove('hidden');
+            setTimeout(() => statusEl.classList.add('hidden'), 2500);
+
+            // Broadcast seketika ke tab & device lain
+            broadcastRealtimeUpdate();
+
+            fetch('index.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: `action=add_note_history&author=${encodeURIComponent(author)}&text=${encodeURIComponent(text)}&device=${encodeURIComponent(getDeviceDescriptor())}&time=${encodeURIComponent(getWIBTime())}`
+            }).catch(() => {});
+        };
+
+        // MODAL BALAS KOMENTAR
+        let pendingReplyNoteId = null;
+
+        window.openReplyModal = function(noteId) {
+            pendingReplyNoteId = noteId;
+            const note = (globalState.notes_history || []).find(n => (n.id || '') === noteId || String(n.id) === String(noteId));
+            
+            document.getElementById('modal-reply-target-author').innerText = note ? `Membalas: ${note.author}` : '';
+            document.getElementById('modal-reply-parent-text').innerText = note ? `"${note.text}"` : '';
+            document.getElementById('modal-reply-text').value = '';
+
+            document.getElementById('modal-add-reply').classList.remove('hidden');
+        };
+
+        window.closeReplyModal = function() {
+            document.getElementById('modal-add-reply').classList.add('hidden');
+            pendingReplyNoteId = null;
+        };
+
+        window.submitModalReply = function() {
+            if (!pendingReplyNoteId) return;
+            const textEl = document.getElementById('modal-reply-text');
+            const text = textEl.value.trim();
+            if (!text) return;
+
+            const author = document.getElementById('modal-reply-author').value;
+            const newReply = {
+                id: 'reply-' + Date.now(),
+                author: author,
+                text: text,
+                device: getDeviceDescriptor(),
+                time: getWIBTime()
+            };
+
+            const note = globalState.notes_history.find(n => (n.id || '') === pendingReplyNoteId || String(n.id) === String(pendingReplyNoteId));
+            if (note) {
+                if (!note.replies) note.replies = [];
+                note.replies.push(newReply);
+            }
+
+            localStorage.setItem('dlw_dashboard_state', JSON.stringify(globalState));
+            renderNotesHistory();
+            closeReplyModal();
+
+            // Broadcast seketika ke tab & device lain
+            broadcastRealtimeUpdate();
+
+            fetch('index.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: `action=add_reply&note_id=${encodeURIComponent(pendingReplyNoteId)}&author=${encodeURIComponent(author)}&text=${encodeURIComponent(text)}&device=${encodeURIComponent(getDeviceDescriptor())}&time=${encodeURIComponent(getWIBTime())}`
+            }).catch(() => {});
+        };
 
         // Render Riwayat Catatan & Komentar Saling Balas
         function renderNotesHistory() {
@@ -523,7 +813,7 @@
             const history = globalState.notes_history || [];
 
             if (history.length === 0) {
-                container.innerHTML = '<div class="py-4 text-center text-slate-400 text-xs">Belum ada riwayat catatan. Tuliskan catatan pertama tim Anda di atas!</div>';
+                container.innerHTML = '<div class="py-4 text-center text-slate-400 text-xs">Belum ada riwayat catatan. Klik tombol di atas untuk menulis catatan pertama!</div>';
                 return;
             }
 
@@ -548,135 +838,38 @@
 
                     <p class="text-xs text-slate-700 leading-relaxed pl-8 whitespace-pre-wrap break-words">${item.text}</p>
 
-                    <!-- Tombol Balas & Section Balasan -->
+                    <!-- Tombol Balas (Membuka Modal) -->
                     <div class="pl-8 pt-1 flex items-center gap-3">
-                        <button onclick="toggleReplyBox('${item.id || index}')" class="text-[11px] font-semibold text-slate-600 hover:text-slate-900 flex items-center gap-1.5 transition">
+                        <button onclick="openReplyModal('${item.id || index}')" class="text-[11px] font-semibold text-slate-600 hover:text-slate-900 bg-white hover:bg-slate-100 border border-slate-200 px-2.5 py-1 rounded-md flex items-center gap-1.5 transition">
                             <i class="fa-solid fa-reply text-[10px]"></i>
                             <span>Balas (${replies.length})</span>
                         </button>
                     </div>
 
                     <!-- Container Balasan Komentar (Threaded) -->
-                    <div class="pl-8 space-y-2.5 pt-1">
-                        ${replies.map(reply => `
-                            <div class="p-2.5 sm:p-3 rounded-lg bg-white border border-slate-200/80 space-y-1">
-                                <div class="flex items-center justify-between text-[11px] gap-2">
-                                    <div class="flex items-center gap-1.5">
-                                        <span class="font-bold text-slate-900">${reply.author}</span>
-                                        <span class="text-slate-400">•</span>
-                                        <span class="text-[10px] text-slate-500 font-mono">${reply.time}</span>
+                    ${replies.length > 0 ? `
+                        <div class="pl-8 space-y-2.5 pt-1">
+                            ${replies.map(reply => `
+                                <div class="p-2.5 sm:p-3 rounded-lg bg-white border border-slate-200/80 space-y-1">
+                                    <div class="flex items-center justify-between text-[11px] gap-2">
+                                        <div class="flex items-center gap-1.5">
+                                            <span class="font-bold text-slate-900">${reply.author}</span>
+                                            <span class="text-slate-400">•</span>
+                                            <span class="text-[10px] text-slate-500 font-mono">${reply.time}</span>
+                                        </div>
+                                        <span class="text-[9px] text-slate-400 font-mono hidden sm:inline">${reply.device || ''}</span>
                                     </div>
-                                    <span class="text-[9px] text-slate-400 font-mono hidden sm:inline">${reply.device || ''}</span>
+                                    <p class="text-xs text-slate-700 leading-relaxed break-words">${reply.text}</p>
                                 </div>
-                                <p class="text-xs text-slate-700 leading-relaxed break-words">${reply.text}</p>
-                            </div>
-                        `).join('')}
-
-                        <!-- Form Balas Komentar (Hidden by default) -->
-                        <div id="reply-box-${item.id || index}" class="hidden bg-white p-3 rounded-lg border border-slate-300 space-y-2 mt-2">
-                            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-1.5">
-                                <span class="text-[11px] font-semibold text-slate-700">Balas sebagai:</span>
-                                <select id="reply-author-${item.id || index}" class="bg-slate-50 border border-slate-300 rounded px-2 py-0.5 text-xs text-slate-800 font-medium">
-                                    <option value="M. Hamdan Al Ghifari">M. Hamdan Al Ghifari</option>
-                                    <option value="Nathanael Hasiholan T.">Nathanael Hasiholan T.</option>
-                                    <option value="Robin Syaifuddin (Ketua)">Robin Syaifuddin (Ketua)</option>
-                                </select>
-                            </div>
-                            <textarea id="reply-text-${item.id || index}" rows="2" class="w-full bg-slate-50/50 border border-slate-200 rounded p-2 text-xs text-slate-800 focus:bg-white focus:outline-none focus:ring-1 focus:ring-slate-900" placeholder="Ketik balasan untuk ${item.author}..."></textarea>
-                            <div class="flex justify-end gap-2">
-                                <button onclick="toggleReplyBox('${item.id || index}')" class="px-2.5 py-1 text-xs text-slate-500 hover:text-slate-800">Batal</button>
-                                <button onclick="submitReply('${item.id || index}')" class="px-3 py-1 bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold rounded shadow-xs">Kirim</button>
-                            </div>
+                            `).join('')}
                         </div>
-                    </div>
+                    ` : ''}
                 </div>
                 `;
             });
 
             container.innerHTML = html;
         }
-
-        // Toggle Tampilan Kotak Balasan
-        window.toggleReplyBox = function(noteId) {
-            const box = document.getElementById(`reply-box-${noteId}`);
-            if (box) box.classList.toggle('hidden');
-        };
-
-        // Kirim Balasan Komentar
-        window.submitReply = function(noteId) {
-            const replyInput = document.getElementById(`reply-text-${noteId}`);
-            const text = replyInput.value.trim();
-            if (!text) return;
-
-            const author = document.getElementById(`reply-author-${noteId}`).value;
-            const newReply = {
-                id: 'reply-' + Date.now(),
-                author: author,
-                text: text,
-                device: getDeviceDescriptor(),
-                time: getWIBTime()
-            };
-
-            const note = globalState.notes_history.find(n => (n.id || '') === noteId || String(n.id) === String(noteId));
-            if (note) {
-                if (!note.replies) note.replies = [];
-                note.replies.push(newReply);
-            } else if (globalState.notes_history[noteId]) {
-                if (!globalState.notes_history[noteId].replies) globalState.notes_history[noteId].replies = [];
-                globalState.notes_history[noteId].replies.push(newReply);
-            }
-
-            localStorage.setItem('dlw_dashboard_state', JSON.stringify(globalState));
-            renderNotesHistory();
-
-            // Broadcast update balasan realtime
-            broadcastRealtimeUpdate();
-
-            // Sync ke backend PHP jika di lokal
-            fetch('index.php', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: `action=add_reply&note_id=${encodeURIComponent(noteId)}&author=${encodeURIComponent(author)}&text=${encodeURIComponent(text)}&device=${encodeURIComponent(getDeviceDescriptor())}&time=${encodeURIComponent(getWIBTime())}`
-            }).catch(() => {});
-        };
-
-        // Tambah Catatan Utama Baru
-        document.getElementById('add-note-btn').addEventListener('click', function() {
-            const inputEl = document.getElementById('team-notes-input');
-            const text = inputEl.value.trim();
-            if (!text) return;
-
-            const author = document.getElementById('note-author-input').value;
-            const newNote = {
-                id: 'note-' + Date.now(),
-                author: author,
-                text: text,
-                device: getDeviceDescriptor(),
-                time: getWIBTime(),
-                replies: []
-            };
-
-            if (!globalState.notes_history) globalState.notes_history = [];
-            globalState.notes_history.unshift(newNote);
-
-            localStorage.setItem('dlw_dashboard_state', JSON.stringify(globalState));
-            inputEl.value = '';
-
-            const statusEl = document.getElementById('notes-status');
-            statusEl.classList.remove('hidden');
-            setTimeout(() => statusEl.classList.add('hidden'), 2500);
-
-            renderNotesHistory();
-
-            // Broadcast ke tab browser lain secara real-time
-            broadcastRealtimeUpdate();
-
-            fetch('index.php', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: `action=add_note_history&author=${encodeURIComponent(author)}&text=${encodeURIComponent(text)}&device=${encodeURIComponent(getDeviceDescriptor())}&time=${encodeURIComponent(getWIBTime())}`
-            }).catch(() => {});
-        });
 
         // BroadcastChannel untuk realtime sinkronisasi instan antar tab/window
         let syncChannel = null;
@@ -771,22 +964,28 @@
                 });
         }
 
-        // Realtime Polling otomatis setiap 12 detik untuk mengecek update publik
+        // Realtime Polling otomatis setiap 6 detik untuk mengecek update publik (Centang & Catatan)
         setInterval(() => {
             fetch('dashboard_state.json?t=' + Date.now())
                 .then(res => res.json())
                 .then(serverState => {
-                    const prevCount = (globalState.notes_history || []).reduce((acc, cur) => acc + 1 + (cur.replies ? cur.replies.length : 0), 0);
-                    mergeState(serverState);
-                    const newCount = (globalState.notes_history || []).reduce((acc, cur) => acc + 1 + (cur.replies ? cur.replies.length : 0), 0);
+                    const prevDone = Object.values(globalState.tasks || {}).filter(Boolean).length;
+                    const prevNotesCount = (globalState.notes_history || []).reduce((acc, cur) => acc + 1 + (cur.replies ? cur.replies.length : 0), 0);
                     
-                    if (newCount !== prevCount) {
-                        renderNotesHistory();
+                    mergeState(serverState);
+                    
+                    const newDone = Object.values(globalState.tasks || {}).filter(Boolean).length;
+                    const newNotesCount = (globalState.notes_history || []).reduce((acc, cur) => acc + 1 + (cur.replies ? cur.replies.length : 0), 0);
+                    
+                    if (newDone !== prevDone) {
                         renderPhasesUI();
+                    }
+                    if (newNotesCount !== prevNotesCount) {
+                        renderNotesHistory();
                     }
                 })
                 .catch(() => {});
-        }, 12000);
+        }, 6000);
 
         function timeAgo(dateString) {
             const date = new Date(dateString);
