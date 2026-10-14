@@ -37,28 +37,21 @@
    - [x] Terpilih resmi 2 faktor: **B4 (Fungsi Loss: MSE, MAE, Huber)** dan **B6 (Forecasting Horizon: 1, 6, 24 jam)**.
    - [x] Formulasi hipotesis saintifik *before run* telah dikunci lengkap dengan dasar literatur.
 3. **Master Planning & Tracking System:**
-   - [x] Folder `plan/` terstruktur lengkap (Fase, Brainstorming, Matriks Eksperimen, Panduan Git, Panduan Typst).
+   - [x] Folder `plan/` terstruktur lengkap (Fase, Brainstorming, Matriks Eksperimen, Panduan Git, Panduan Typst, Panduan Vercel).
+4. **Setup Kloning & Struktur Proyek Baku:**
+   - [x] Menyalin starter kit resmi (`tugas_ablasi.ipynb`, `data/`, `laporan-typst/`, `pyproject.toml`, `README.md`).
+   - [x] Mengisi `LOKASI_KELOMPOK = 1` (Navigli Kotak 4555) di `tugas_ablasi.ipynb`.
+5. **Setup Dependensi Lingkungan:**
+   - [x] Instalasi `uv` dan eksekusi `uv sync` (106 paket: PyTorch, Pandas, Numpy, Matplotlib, JupyterLab terinstal di `.venv`).
+6. **Integrasi GitHub Publik & Vercel:**
+   - [x] Repositori publik GitHub `robinsyaifuddin/dlw-tugas-ra-122400001` aktif dan ter-push.
+   - [x] Live tracker dideploy ke Vercel dengan arsitektur zero-config `index.html`.
 
 ---
 
-### ⏳ Yang Sedang / Perlu Diselesaikan di Fase 1:
-1. **Setup Kloning & Struktur Proyek yang Benar:**
-   - [ ] Mengunduh atau menyalin starter kit ke repositori ini dengan struktur baku:
-     - `tugas_ablasi.ipynb` (notebook utama eksperimen)
-     - `data/` (`milano_duomo_5060.csv` dan `milano_tugas_10_lokasi.csv`)
-     - `laporan-typst/` (template IEEE conference untuk Typst)
-     - `pyproject.toml` (manajemen paket & dependensi uv)
-     - `README.md` (template identitas tim & dokumentasi repo publik)
-2. **Kaitkan ke GitHub Publik & Deploy Dashboard ke Vercel:**
-   - [ ] Inisialisasi Git lokal (`git init`), commit semua file perencanaan dan konfigurasi Vercel.
-   - [ ] Buat remote GitHub publik: `dlw-tugas-<kelas>-122400001` dan lakukan push ke `main`.
-   - [ ] Hubungkan repo GitHub ke **Vercel** (`https://vercel.com`) $\rightarrow$ Import Project $\rightarrow$ Deploy.
-   - [ ] Dapatkan domain publik aktif (misal `https://dlw-tugas-ra-122400001.vercel.app`) agar progress tugas dapat diakses publik oleh seluruh anggota tim dan dosen.
-3. **Setup Lingkungan Komputasi & Smoke Test:**
-   - [ ] Eksekusi `uv sync` (atau `pip install torch pandas numpy matplotlib jupyterlab`).
-   - [ ] Buka `tugas_ablasi.ipynb`, isi `LOKASI_KELOMPOK = 1`, lalu uji jalankan dengan `CEPAT = True` untuk memvalidasi pembuatan `hasil/ablasi.csv`.
-   - [ ] Buka `tugas_ablasi.ipynb`, ubah variabel `LOKASI_KELOMPOK = 1`.
-   - [ ] Jalankan 1-2 sel dengan flag `CEPAT = True` untuk memastikan tidak ada error library dan file `hasil/ablasi.csv` berhasil terbuat secara otomatis.
+### ⏳ Yang Tinggal Diselesaikan di Fase 1:
+- [ ] **Smoke Test Notebook (`CEPAT = True`):**
+  - Menjalankan sel awal `tugas_ablasi.ipynb` dengan 1 seed & 20 epoch untuk memvalidasi bahwa pipeline training dan penulisan otomatis `hasil/ablasi.csv` berfungsi tanpa error sebelum masuk ke eksperimen penuh ±280 run.
 
 ---
 
