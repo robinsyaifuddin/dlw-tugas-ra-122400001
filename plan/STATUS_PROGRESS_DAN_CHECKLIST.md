@@ -16,11 +16,11 @@
 
 | Fase | Deskripsi Tahapan | Status | Bobot Nilai | Target Penyelesaian |
 |:---:|---|:---:|:---:|:---:|
-| **Fase 1** | Inisialisasi, Setup Lingkungan & Clearing Data/Repo | 🟡 **In Progress (60%)** | 15% (Bagian Repo) | 16 Okt 2026 |
-| **Fase 2** | Eksekusi Eksperimen Bagian 0, A1–A5, & B (B4 & B6) | ⚪ Belum Dimulai | 45% (Bag. 0, A, B) | 20 Okt 2026 |
-| **Fase 3** | Analisis Val MAE & Seleksi Model Terbaik (Bagian C) | ⚪ Belum Dimulai | 15% (Bagian C) | 22 Okt 2026 |
-| **Fase 4** | Uji Generalisasi ke Lokasi Navigli (Bagian D) | ⚪ Belum Dimulai | 15% (Bagian D) | 24 Okt 2026 |
-| **Fase 5** | Penulisan Laporan IEEE Typst, Review & Submit Tally | ⚪ Belum Dimulai | 25% (Laporan Akhir)| 27 Okt 2026 |
+| **Fase 1** | Inisialisasi, Setup Lingkungan & Clearing Data/Repo | 🟢 **Selesai (100%)** | 15% (Bagian Repo) | 16 Okt 2026 |
+| **Fase 2** | Eksekusi Eksperimen Bagian 0, A1–A5, & B (B4 & B6) | 🟡 **Siap Dimulai** | 45% (Bag. 0, A, B) | 20 Okt 2026 |
+| **Fase 3** | Analisis Val MAE & Seleksi Model Terbaik (Bagian C) | 🟡 **Siap Dimulai** | 15% (Bagian C) | 22 Okt 2026 |
+| **Fase 4** | Uji Generalisasi ke Lokasi Navigli (Bagian D) | 🟡 **Siap Dimulai** | 15% (Bagian D) | 24 Okt 2026 |
+| **Fase 5** | Penulisan Laporan IEEE Typst, Review & Submit Tally | 🟡 **Siap Dimulai** | 25% (Laporan Akhir)| 27 Okt 2026 |
 
 ---
 

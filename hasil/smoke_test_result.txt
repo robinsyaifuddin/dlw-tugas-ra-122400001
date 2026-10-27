@@ -1,5 +1,5 @@
-SMOKE TEST PASSED: 2026-10-15 04:09:59
+SMOKE TEST PASSED: 2026-10-28 02:27:42
 Data Duomo: (1344, 4)
 Data Navigli: (1344, 7)
-PyTorch: 2.14.1+cpu
-Loss Huber: 0.3211
+PyTorch: 2.1.2+cpu
+Loss Huber: 0.4026
