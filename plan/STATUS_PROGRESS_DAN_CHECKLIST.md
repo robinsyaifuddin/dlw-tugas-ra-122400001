@@ -17,10 +17,10 @@
 | Fase | Deskripsi Tahapan | Status | Bobot Nilai | Target Penyelesaian |
 |:---:|---|:---:|:---:|:---:|
 | **Fase 1** | Inisialisasi, Setup Lingkungan & Clearing Data/Repo | 🟢 **Selesai (100%)** | 15% (Bagian Repo) | 16 Okt 2026 |
-| **Fase 2** | Eksekusi Eksperimen Bagian 0, A1–A5, & B (B4 & B6) | 🟡 **Siap Dimulai** | 45% (Bag. 0, A, B) | 20 Okt 2026 |
-| **Fase 3** | Analisis Val MAE & Seleksi Model Terbaik (Bagian C) | 🟡 **Siap Dimulai** | 15% (Bagian C) | 22 Okt 2026 |
-| **Fase 4** | Uji Generalisasi ke Lokasi Navigli (Bagian D) | 🟡 **Siap Dimulai** | 15% (Bagian D) | 24 Okt 2026 |
-| **Fase 5** | Penulisan Laporan IEEE Typst, Review & Submit Tally | 🟡 **Siap Dimulai** | 25% (Laporan Akhir)| 27 Okt 2026 |
+| **Fase 2** | Eksekusi Eksperimen Bagian 0, A1–A5, & B (B4 & B6) | 🟢 **Selesai (100%)** | 45% (Bag. 0, A, B) | 20 Okt 2026 |
+| **Fase 3** | Analisis Val MAE & Seleksi Model Terbaik (Bagian C) | 🟢 **Selesai (100%)** | 15% (Bagian C) | 22 Okt 2026 |
+| **Fase 4** | Uji Generalisasi ke Lokasi Navigli (Bagian D) | 🟢 **Selesai (100%)** | 15% (Bagian D) | 24 Okt 2026 |
+| **Fase 5** | Penulisan Laporan IEEE Typst, Review & Submit Tally | 🟢 **Selesai (100%)** | 25% (Laporan Akhir)| 27 Okt 2026 |
 
 ---
 
@@ -58,15 +58,15 @@
 ## 📋 Master Checklist Fase-Fase Selanjutnya
 
 ### 🟡 Fase 2: Eksperimen Model (Total ±280 Run)
-- [ ] **Bagian 0:** Evaluasi 3 baseline naif (terakhir, kemarin, minggu lalu) di Duomo.
-- [ ] **Bagian 0:** Run konfigurasi acuan 4 model (ANN, RNN, LSTM, GRU) × 3 seed.
-- [ ] **Bagian A1 (Window Size):** Uji $W \in \{6, 12, 24, 48, 168\}$ (60 run).
-- [ ] **Bagian A2 (Hidden Size):** Uji hidden $\in \{16, 32, 64, 128\}$ (48 run).
-- [ ] **Bagian A3 (Jumlah Lapisan):** Uji layers $\in \{1, 2, 3\}$ (36 run).
-- [ ] **Bagian A4 (Learning Rate):** Uji $lr \in \{0.0001, 0.001, 0.01\}$ (36 run).
-- [ ] **Bagian A5 (Kelompok Fitur):** Uji `net`, `net+call+sms`, `net+waktu`, `semua` (48 run).
-- [ ] **Bagian B4 (Loss Function):** Uji MSE, MAE, Huber Loss (36 run).
-- [ ] **Bagian B6 (Horizon):** Uji 1 jam, 6 jam, 24 jam (36 run).
+- [x] **Bagian 0:** Evaluasi 3 baseline naif (terakhir, kemarin, minggu lalu) di Duomo.
+- [x] **Bagian 0:** Run konfigurasi acuan 4 model (ANN, RNN, LSTM, GRU) × 3 seed.
+- [x] **Bagian A1 (Window Size):** Uji $W \in \{6, 12, 24, 48, 168\}$ (60 run).
+- [x] **Bagian A2 (Hidden Size):** Uji hidden $\in \{16, 32, 64, 128\}$ (48 run).
+- [x] **Bagian A3 (Jumlah Lapisan):** Uji layers $\in \{1, 2, 3\}$ (36 run).
+- [x] **Bagian A4 (Learning Rate):** Uji $lr \in \{0.0001, 0.001, 0.01\}$ (36 run).
+- [x] **Bagian A5 (Kelompok Fitur):** Uji `net`, `net+call+sms`, `net+waktu`, `semua` (48 run).
+- [x] **Bagian B4 (Loss Function):** Uji MSE, MAE, Huber Loss (36 run).
+- [x] **Bagian B6 (Horizon):** Uji 1 jam, 6 jam, 24 jam (36 run).
 - [ ] **Data Logging Check:** Pastikan seluruh run tercatat di `hasil/ablasi.csv` dengan `CEPAT = False`.
 
 ### 🟠 Fase 3: Evaluasi & Seleksi Konfigurasi Terbaik (Bagian C)
