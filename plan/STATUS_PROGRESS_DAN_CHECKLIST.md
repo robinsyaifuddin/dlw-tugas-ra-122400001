@@ -50,7 +50,7 @@
 ---
 
 ### ⏳ Yang Tinggal Diselesaikan di Fase 1:
-- [ ] **Smoke Test Notebook (`CEPAT = True`):**
+- [x] **Smoke Test Notebook (`CEPAT = True`):**
   - Menjalankan sel awal `tugas_ablasi.ipynb` dengan 1 seed & 20 epoch untuk memvalidasi bahwa pipeline training dan penulisan otomatis `hasil/ablasi.csv` berfungsi tanpa error sebelum masuk ke eksperimen penuh ±280 run.
 
 ---
@@ -67,7 +67,7 @@
 - [x] **Bagian A5 (Kelompok Fitur):** Uji `net`, `net+call+sms`, `net+waktu`, `semua` (48 run).
 - [x] **Bagian B4 (Loss Function):** Uji MSE, MAE, Huber Loss (36 run).
 - [x] **Bagian B6 (Horizon):** Uji 1 jam, 6 jam, 24 jam (36 run).
-- [ ] **Data Logging Check:** Pastikan seluruh run tercatat di `hasil/ablasi.csv` dengan `CEPAT = False`.
+- [x] **Data Logging Check:** Pastikan seluruh run tercatat di `hasil/ablasi.csv` dengan `CEPAT = False`.
 
 ### 🟠 Fase 3: Evaluasi & Seleksi Konfigurasi Terbaik (Bagian C)
 - [x] Hitung rata-rata **Validation MAE** 3 seed untuk setiap kombinasi faktor.
@@ -83,14 +83,14 @@
 - [x] Hubungkan hasil dengan karakteristik kanal & *nightlife* Navigli.
 
 ### 🟣 Fase 5: Penulisan Laporan Typst & Final Submission
-- [ ] Buat project Typst di [typst.app](https://typst.app) dan undang seluruh anggota tim.
-- [ ] Tulis 8 bab naskah format IEEE 2-kolom (Abstrak, Pendahuluan, Metode, Hasil, Pembahasan, Kesimpulan, Kontribusi, Pernyataan AI).
-- [ ] Generate tabel hasil komprehensif dalam format $mean \pm std$.
-- [ ] Ekspor grafik kurva konvergensi & perbandingan MAE beresolusi tinggi ke folder `laporan-typst/gambar/`.
-- [ ] Audit naskah: Maksimal **6 halaman**, tidak boleh ada angka fiktif yang tidak ada di `ablasi.csv`.
-- [ ] Compile naskah menjadi `laporan.pdf`.
-- [ ] Commit dan push semua perubahan (termasuk `tugas_ablasi.ipynb` dengan **output ter-render penuh**).
-- [ ] Submit URL repo GitHub publik dan file PDF melalui form Tally (<https://tally.so/r/VLRYba>).
+- [x] Buat project Typst di [typst.app](https://typst.app) dan undang seluruh anggota tim.
+- [x] Tulis 8 bab naskah format IEEE 2-kolom (Abstrak, Pendahuluan, Metode, Hasil, Pembahasan, Kesimpulan, Kontribusi, Pernyataan AI).
+- [x] Generate tabel hasil komprehensif dalam format $mean \pm std$.
+- [x] Ekspor grafik kurva konvergensi & perbandingan MAE beresolusi tinggi ke folder `laporan-typst/gambar/`.
+- [x] Audit naskah: Maksimal **6 halaman**, tidak boleh ada angka fiktif yang tidak ada di `ablasi.csv`.
+- [x] Compile naskah menjadi `laporan.pdf`.
+- [x] Commit dan push semua perubahan (termasuk `tugas_ablasi.ipynb` dengan **output ter-render penuh**).
+- [x] Submit URL repo GitHub publik dan file PDF melalui form Tally (<https://tally.so/r/VLRYba>).
 
 ---
 
