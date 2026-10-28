@@ -11,7 +11,7 @@
 ## 📊 Live Progress Tracker
 
 ```
-[██████░░░░░░░░░░░░░░] 25% Total Proyek Selesai
+[██████████████████░░] 85% Total Proyek Selesai
 ```
 
 | Fase | Deskripsi Tahapan | Status | Bobot Nilai | Target Penyelesaian |
@@ -70,17 +70,17 @@
 - [ ] **Data Logging Check:** Pastikan seluruh run tercatat di `hasil/ablasi.csv` dengan `CEPAT = False`.
 
 ### 🟠 Fase 3: Evaluasi & Seleksi Konfigurasi Terbaik (Bagian C)
-- [ ] Hitung rata-rata **Validation MAE** 3 seed untuk setiap kombinasi faktor.
-- [ ] Tentukan kombinasi nilai faktor terbaik untuk masing-masing: ANN, RNN, LSTM, GRU.
-- [ ] Evaluasi konfigurasi terbaik pada **Minggu Test Biasa (16–22 Des 2013)**.
-- [ ] Evaluasi konfigurasi terbaik pada **Minggu Libur Natal (23–29 Des 2013)**.
-- [ ] Analisis apakah kombinasi terbaik mengalahkan model acuan dan baseline naif.
+- [x] Hitung rata-rata **Validation MAE** 3 seed untuk setiap kombinasi faktor.
+- [x] Tentukan kombinasi nilai faktor terbaik untuk masing-masing: ANN, RNN, LSTM, GRU.
+- [x] Evaluasi konfigurasi terbaik pada **Minggu Test Biasa (16–22 Des 2013)**.
+- [x] Evaluasi konfigurasi terbaik pada **Minggu Libur Natal (23–29 Des 2013)**.
+- [x] Analisis apakah kombinasi terbaik mengalahkan model acuan dan baseline naif.
 
 ### 🔵 Fase 4: Uji Generalisasi di Navigli (Bagian D)
-- [ ] Latih konfigurasi acuan pada data lokasi Navigli (Kotak 4555) dengan 3 seed.
-- [ ] Latih konfigurasi terbaik (hasil Bagian C) pada data lokasi Navigli dengan 3 seed.
-- [ ] Bandingkan performa di Duomo vs Navigli: Apakah ranking model tetap konsisten?
-- [ ] Hubungkan hasil dengan karakteristik kanal & *nightlife* Navigli.
+- [x] Latih konfigurasi acuan pada data lokasi Navigli (Kotak 4555) dengan 3 seed.
+- [x] Latih konfigurasi terbaik (hasil Bagian C) pada data lokasi Navigli dengan 3 seed.
+- [x] Bandingkan performa di Duomo vs Navigli: Apakah ranking model tetap konsisten?
+- [x] Hubungkan hasil dengan karakteristik kanal & *nightlife* Navigli.
 
 ### 🟣 Fase 5: Penulisan Laporan Typst & Final Submission
 - [ ] Buat project Typst di [typst.app](https://typst.app) dan undang seluruh anggota tim.
