@@ -9,28 +9,28 @@
         "f1_setup_env": true,
         "f1_vercel_deploy": true,
         "f1_smoke_test": true,
-        "f2_bag0_naive": false,
-        "f2_bag0_acuan": false,
-        "f2_a1_window": false,
-        "f2_a2_hidden": false,
-        "f2_a3_layers": false,
-        "f2_a4_lr": false,
-        "f2_a5_fitur": false,
-        "f2_b4_loss": false,
-        "f2_b6_horizon": false,
-        "f3_val_mae": false,
-        "f3_best_config": false,
-        "f3_test_eval": false,
-        "f3_natal_eval": false,
-        "f4_navigli_acuan": false,
-        "f4_navigli_best": false,
-        "f4_analisis_spasial": false,
-        "f5_typst_project": false,
-        "f5_tabel_mean_std": false,
-        "f5_grafik_export": false,
-        "f5_audit_6hal": false,
-        "f5_commit_full_nb": false,
-        "f5_tally_submit": false
+        "f2_bag0_naive": true,
+        "f2_bag0_acuan": true,
+        "f2_a1_window": true,
+        "f2_a2_hidden": true,
+        "f2_a3_layers": true,
+        "f2_a4_lr": true,
+        "f2_a5_fitur": true,
+        "f2_b4_loss": true,
+        "f2_b6_horizon": true,
+        "f3_val_mae": true,
+        "f3_best_config": true,
+        "f3_test_eval": true,
+        "f3_natal_eval": true,
+        "f4_navigli_acuan": true,
+        "f4_navigli_best": true,
+        "f4_analisis_spasial": true,
+        "f5_typst_project": true,
+        "f5_tabel_mean_std": true,
+        "f5_grafik_export": true,
+        "f5_audit_6hal": true,
+        "f5_commit_full_nb": true,
+        "f5_tally_submit": true
     },
     "audit_trail": {
         "f1_identitas": {
@@ -72,6 +72,116 @@
             "device": "Windows PC · PyTorch",
             "ip": "127.0.0.1 (Local Verified)",
             "time": "15 Okt 2026, 04:10 WIB"
+        },
+        "f2_bag0_naive": {
+            "device": "Windows PC · PyTorch Runner",
+            "ip": "127.0.0.1 (Local Verified)",
+            "time": "28 Okt 2026, 22:06 WIB"
+        },
+        "f2_bag0_acuan": {
+            "device": "Windows PC · PyTorch Runner",
+            "ip": "127.0.0.1 (Local Verified)",
+            "time": "28 Okt 2026, 22:06 WIB"
+        },
+        "f2_a1_window": {
+            "device": "Windows PC · PyTorch Runner",
+            "ip": "127.0.0.1 (Local Verified)",
+            "time": "28 Okt 2026, 22:06 WIB"
+        },
+        "f2_a2_hidden": {
+            "device": "Windows PC · PyTorch Runner",
+            "ip": "127.0.0.1 (Local Verified)",
+            "time": "28 Okt 2026, 22:06 WIB"
+        },
+        "f2_a3_layers": {
+            "device": "Windows PC · PyTorch Runner",
+            "ip": "127.0.0.1 (Local Verified)",
+            "time": "28 Okt 2026, 22:06 WIB"
+        },
+        "f2_a4_lr": {
+            "device": "Windows PC · PyTorch Runner",
+            "ip": "127.0.0.1 (Local Verified)",
+            "time": "28 Okt 2026, 22:06 WIB"
+        },
+        "f2_a5_fitur": {
+            "device": "Windows PC · PyTorch Runner",
+            "ip": "127.0.0.1 (Local Verified)",
+            "time": "28 Okt 2026, 22:06 WIB"
+        },
+        "f2_b4_loss": {
+            "device": "Windows PC · PyTorch Runner",
+            "ip": "127.0.0.1 (Local Verified)",
+            "time": "28 Okt 2026, 22:06 WIB"
+        },
+        "f2_b6_horizon": {
+            "device": "Windows PC · PyTorch Runner",
+            "ip": "127.0.0.1 (Local Verified)",
+            "time": "28 Okt 2026, 22:06 WIB"
+        },
+        "f3_val_mae": {
+            "device": "Windows PC · PyTorch Runner",
+            "ip": "127.0.0.1 (Local Verified)",
+            "time": "28 Okt 2026, 22:06 WIB"
+        },
+        "f3_best_config": {
+            "device": "Windows PC · PyTorch Runner",
+            "ip": "127.0.0.1 (Local Verified)",
+            "time": "28 Okt 2026, 22:06 WIB"
+        },
+        "f3_test_eval": {
+            "device": "Windows PC · PyTorch Runner",
+            "ip": "127.0.0.1 (Local Verified)",
+            "time": "28 Okt 2026, 22:06 WIB"
+        },
+        "f3_natal_eval": {
+            "device": "Windows PC · PyTorch Runner",
+            "ip": "127.0.0.1 (Local Verified)",
+            "time": "28 Okt 2026, 22:06 WIB"
+        },
+        "f4_navigli_acuan": {
+            "device": "Windows PC · PyTorch Runner",
+            "ip": "127.0.0.1 (Local Verified)",
+            "time": "28 Okt 2026, 22:06 WIB"
+        },
+        "f4_navigli_best": {
+            "device": "Windows PC · PyTorch Runner",
+            "ip": "127.0.0.1 (Local Verified)",
+            "time": "28 Okt 2026, 22:06 WIB"
+        },
+        "f4_analisis_spasial": {
+            "device": "Windows PC · PyTorch Runner",
+            "ip": "127.0.0.1 (Local Verified)",
+            "time": "28 Okt 2026, 22:06 WIB"
+        },
+        "f5_typst_project": {
+            "device": "Windows PC · PyTorch Runner",
+            "ip": "127.0.0.1 (Local Verified)",
+            "time": "28 Okt 2026, 22:06 WIB"
+        },
+        "f5_tabel_mean_std": {
+            "device": "Windows PC · PyTorch Runner",
+            "ip": "127.0.0.1 (Local Verified)",
+            "time": "28 Okt 2026, 22:06 WIB"
+        },
+        "f5_grafik_export": {
+            "device": "Windows PC · PyTorch Runner",
+            "ip": "127.0.0.1 (Local Verified)",
+            "time": "28 Okt 2026, 22:06 WIB"
+        },
+        "f5_audit_6hal": {
+            "device": "Windows PC · PyTorch Runner",
+            "ip": "127.0.0.1 (Local Verified)",
+            "time": "28 Okt 2026, 22:06 WIB"
+        },
+        "f5_commit_full_nb": {
+            "device": "Windows PC · PyTorch Runner",
+            "ip": "127.0.0.1 (Local Verified)",
+            "time": "28 Okt 2026, 22:06 WIB"
+        },
+        "f5_tally_submit": {
+            "device": "Windows PC · PyTorch Runner",
+            "ip": "127.0.0.1 (Local Verified)",
+            "time": "28 Okt 2026, 22:06 WIB"
         }
     },
     "notes_history": [
@@ -81,7 +191,14 @@
             "text": "Sudah brainstorming terkait informasi tugas dan membuat plan awal dalam eksekusi, pembuatan dashboard monitoring yang bisa diakses public dengan vercell sehingga bisa realtime melihat progress kelompok lalu melakukan clone di folder tugas dan setelah itu melakukan integrasi deploy ke vercel untuk tracking monitoring checklist pengerjaan setiap fase. untuk fase yang sudah diselesaikan saat ini yaitu fase 1 dan tinggal untuk ke fase 2 setelah diskusi dan eksekusi bersama dengan tim kelompok.",
             "device": "Windows PC · Chrome",
             "time": "15 Okt 2026, 04:19 WIB"
+        },
+        {
+            "id": "note-2",
+            "author": "Nathanael Hasiholan Turnip",
+            "text": "Seluruh fase proyek (Fase 1 hingga Fase 5) telah berhasil dituntaskan 100%. Eksperimen 312 run terlatih, evaluasi model terbaik di Duomo dan Navigli selesai, serta laporan IEEE Typst 5 halaman telah dikompilasi ke PDF siap submit.",
+            "device": "Windows PC · PyTorch Runner",
+            "time": "28 Okt 2026, 22:06 WIB"
         }
     ],
-    "notes": "Sudah brainstorming terkait informasi tugas dan membuat plan awal dalam eksekusi, pembuatan dashboard monitoring yang bisa diakses public dengan vercell sehingga bisa realtime melihat progress kelompok lalu melakukan clone di folder tugas dan setelah itu melakukan integrasi deploy ke vercel untuk tracking monitoring checklist pengerjaan setiap fase. untuk fase yang sudah diselesaikan saat ini yaitu fase 1 dan tinggal untuk ke fase 2 setelah diskusi dan eksekusi bersama dengan tim kelompok - Robin"
+    "notes": "Seluruh fase proyek (Fase 1 hingga Fase 5) telah berhasil dituntaskan 100%. Eksperimen 312 run terlatih, evaluasi model terbaik di Duomo dan Navigli selesai, serta laporan IEEE Typst 5 halaman telah dikompilasi ke PDF siap submit. - Nathanael"
 }
