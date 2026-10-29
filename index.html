@@ -924,11 +924,16 @@
             return Array.from(map.values());
         }
 
-        function mergeState(incoming) {
+        function mergeState(incoming, isServer = false) {
             if (!incoming) return;
             globalState.github_repo = incoming.github_repo || globalState.github_repo || currentRepo;
-            globalState.tasks = { ...incoming.tasks, ...globalState.tasks };
-            globalState.audit_trail = { ...incoming.audit_trail, ...globalState.audit_trail };
+            if (isServer) {
+                globalState.tasks = { ...globalState.tasks, ...incoming.tasks };
+                globalState.audit_trail = { ...globalState.audit_trail, ...incoming.audit_trail };
+            } else {
+                globalState.tasks = { ...incoming.tasks, ...globalState.tasks };
+                globalState.audit_trail = { ...incoming.audit_trail, ...globalState.audit_trail };
+            }
             globalState.notes_history = mergeNotesHistory(globalState.notes_history, incoming.notes_history);
         }
 
@@ -944,7 +949,7 @@
             fetch('dashboard_state.json?t=' + Date.now())
                 .then(res => res.json())
                 .then(serverState => {
-                    mergeState(serverState);
+                    mergeState(serverState, true);
                     localStorage.setItem('dlw_dashboard_state', JSON.stringify(globalState));
 
                     if (globalState.github_repo) {
@@ -972,7 +977,7 @@
                     const prevDone = Object.values(globalState.tasks || {}).filter(Boolean).length;
                     const prevNotesCount = (globalState.notes_history || []).reduce((acc, cur) => acc + 1 + (cur.replies ? cur.replies.length : 0), 0);
                     
-                    mergeState(serverState);
+                    mergeState(serverState, true);
                     
                     const newDone = Object.values(globalState.tasks || {}).filter(Boolean).length;
                     const newNotesCount = (globalState.notes_history || []).reduce((acc, cur) => acc + 1 + (cur.replies ? cur.replies.length : 0), 0);
