@@ -236,9 +236,9 @@ Melalui 312 run eksperimen ablasi sistematis lintas 3 seed, penelitian ini menyi
 #table(
   columns: (auto, 1fr),
   stroke: none,
-  [Robin Syaifuddin], [Formulasi hipotesis Bagian B, analisis hasil lokasi Navigli, penyusunan laporan IEEE Typst.],
-  [Muhammad Hamdan Al Ghifari], [Setup pipeline data & model, eksekusi eksperimen ablasi wajib Bagian A, kurasi tabel hasil.],
-  [Nathanael Hasiholan Turnip], [Manajemen Git repositori, integrasi skrip smoke test, validasi metrik dan visualisasi plot.],
+  [Robin Syaifuddin], [Manajemen repositori Git sejak inisialisasi awal, integrasi skrip smoke test, validasi metrik dan visualisasi plot.],
+  [Muhammad Hamdan Al Ghifari], [Formulasi hipotesis Bagian B, analisis hasil lokasi Navigli, penyusunan naskah laporan IEEE Typst.],
+  [Nathanael Hasiholan Turnip], [Setup pipeline data & arsitektur model, eksekusi eksperimen ablasi wajib Bagian A, kurasi tabel hasil eksperimen.],
 )
 
 #heading(numbering: none)[Pernyataan Penggunaan AI]
